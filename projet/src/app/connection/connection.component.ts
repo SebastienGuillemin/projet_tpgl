@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormService } from '../form.service';
-import { SafeHtml } from '@angular/platform-browser';
 import { Output, EventEmitter } from '@angular/core'; 
+import { ReactiveFormsModule , FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-connection',
@@ -10,15 +10,26 @@ import { Output, EventEmitter } from '@angular/core';
 }) 
 export class ConnectionComponent implements OnInit {
   title: string = "Connexion";
-  connexionForm: SafeHtml;
+  profileForm: FormGroup;
 
   @Output() titleEmitter: EventEmitter<string> = new EventEmitter();
 
-  constructor(private _formService: FormService){
-    this.connexionForm = this._formService.generateForm();
+  constructor(private _formBuilder: FormBuilder) {
+    this.profileForm = this._formBuilder.group({
+      username: ["", Validators.required],
+      password: ["", Validators.required]
+    });
   }
 
   ngOnInit(): void {
     this.titleEmitter.emit(this.title);
+  }
+
+  getForm(): FormGroup {
+    return this.profileForm;
+  }
+
+  onSubmit(): void {
+    alert("Submit");
   }
 }

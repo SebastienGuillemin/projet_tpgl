@@ -5,6 +5,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   providedIn: 'root'
 })
 export class FormService {
+
   constructor(private _sanitizer: DomSanitizer) { }
 
   generateForm(): SafeHtml {
@@ -22,3 +23,4 @@ export class FormService {
     return this._sanitizer.bypassSecurityTrustHtml(form);
   }
 }
+
