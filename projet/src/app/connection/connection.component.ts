@@ -7,10 +7,11 @@ import { Output, EventEmitter } from '@angular/core';
   selector: 'app-connection',
   templateUrl: './connection.component.html',
   styleUrls: ['./connection.component.css']
-})
+}) 
 export class ConnectionComponent implements OnInit {
   title: string = "Connexion";
-  connexionForm: SafeHtml ;
+  connexionForm: SafeHtml;
+
   @Output() titleEmitter: EventEmitter<string> = new EventEmitter();
 
   constructor(private _formService: FormService){
