@@ -1,6 +1,8 @@
 <app-header></app-header>
 
-<h1>{{ title }} - test</h1>
-
-<!-- C'est ici que les vues se génèrent-->
-<router-outlet></router-outlet>
+<main>
+    <h1>{{ title }}</h1>
+    
+    <!-- C'est ici que les vues se génèrent-->
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+</main>

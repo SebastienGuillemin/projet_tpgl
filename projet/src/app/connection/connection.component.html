@@ -1,12 +1,14 @@
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-    <label>
-        Nom d'utilisateur
-        <input type="text" formControlName="username">
-    </label>
-
-    <label>
-        Mot de passe
-        <input type="text" formControlName="password">
-    </label>
-    <button type="submit" [disabled]="!profileForm.valid"></button>
+    <div class="form-group">
+        <label for="username">Nom d'utilisateur</label>
+        <input type="text" class="form-control" id="username" formControlName="username">
+    </div>        
+    <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <div class="password-input">
+            <input type="password" class="form-control" id="password" formControlName="password">     
+            <button type="button" (click)="togglePassword()" class="togglePasswordButton">Afficher mot de passe</button>
+        </div>
+    </div>
+    <button type="submit"  class="btn btn-primary" [disabled]="!profileForm.valid">Connexion</button>
 </form>

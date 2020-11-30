@@ -5,11 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './fournir-donnees.component.html',
   styleUrls: ['./fournir-donnees.component.css']
 })
-export class FournirDonneesComponent implements OnInit {
-  title : string = "Fournir les données" ;
+export class FournirDonneesComponent {
   constructor() { }
 
-  ngOnInit(): void {
+  getTitle(): string {
+    return "Fournir les données";
   }
-
 }

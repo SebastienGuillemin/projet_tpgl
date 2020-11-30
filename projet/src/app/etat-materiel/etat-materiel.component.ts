@@ -5,11 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './etat-materiel.component.html',
   styleUrls: ['./etat-materiel.component.css']
 })
-export class EtatMaterielComponent implements OnInit {
-   title: string = "Voir état du matériel" ;
+export class EtatMaterielComponent {
   constructor() { }
 
-  ngOnInit(): void {
+  getTitle(): string {
+    return "Voir état du matériel";
   }
-
 }

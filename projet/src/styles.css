@@ -3,3 +3,7 @@ main, nav {
     margin: auto;
     width: 960px;
 }
+
+:disabled {
+    cursor: not-allowed;
+}

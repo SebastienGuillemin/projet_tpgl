@@ -11,8 +11,8 @@ export class AppComponent {
 
   constructor(private _titleEditor: Title) { }
 
-  setTitle(title: string) {
-    this.title = title;
-    this._titleEditor.setTitle(title)
-  }
+  onActivate(componentReference) {
+    this.title = componentReference.getTitle();
+    this._titleEditor.setTitle(this.title)
+ }
 }

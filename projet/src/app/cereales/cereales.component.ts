@@ -5,11 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './cereales.component.html',
   styleUrls: ['./cereales.component.css']
 })
-export class CerealesComponent implements OnInit {
-title : string = "Voir les lot de céréales";
+export class CerealesComponent {
   constructor() { }
 
-  ngOnInit(): void {
+  getTitle(): string {
+    return "Voir les lot de céréales";
   }
 
 }
