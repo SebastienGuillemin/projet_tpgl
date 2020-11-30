@@ -5,12 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConnectionComponent } from './connection/connection.component';
 import { HeaderComponent } from './header/header.component';
+import { EtatMaterielComponent } from './etat-materiel/etat-materiel.component';
+import { CerealesComponent } from './cereales/cereales.component';
+import { FournirDonneesComponent } from './fournir-donnees/fournir-donnees.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConnectionComponent,
-    HeaderComponent
+    HeaderComponent,
+    EtatMaterielComponent,
+    CerealesComponent,
+    FournirDonneesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,31 @@
+.picture-left{
+    float: left;
+}
+ 
+.div-categoryContainer{
+    background-color: cyan;
+    
+    margin:10px 50px 10px 50px;
+    text-align: center;
+    padding: 10px;
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+}
+ 
+.paragraph-right {
+  margin : 20px 0 20px 0;
+}
+
+.div_principale {
+    background-color: crimson;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width : 50%;
+    margin: 0 auto;
+}
+
+img{
+    height: 100px;
+    width: 100px;
+}
