@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./etat-materiel.component.css']
 })
 export class EtatMaterielComponent implements OnInit {
-   title: string = "Voir état matériel" ;
+   title: string = "Voir état du matériel" ;
   constructor() { }
 
   ngOnInit(): void {

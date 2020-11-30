@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cereales.component.css']
 })
 export class CerealesComponent implements OnInit {
-title : string = "Voir lot de céréales" ;
+title : string = "Voir les lot de céréales";
   constructor() { }
 
   ngOnInit(): void {

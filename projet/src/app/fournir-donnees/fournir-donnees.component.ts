@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./fournir-donnees.component.css']
 })
 export class FournirDonneesComponent implements OnInit {
-  title : string = "Fournir données" ;
+  title : string = "Fournir les données" ;
   constructor() { }
 
   ngOnInit(): void {
