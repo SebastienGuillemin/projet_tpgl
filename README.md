@@ -10,7 +10,7 @@ npm update
 ng serve
 ```
 
-`ng serve` build et lance le server en local.
+`npm start` build et lance le server angular et le server express en local.
 
 L'application angular est rebuild automatiquement quand l'un des fichier source du projet est modifié.
 
