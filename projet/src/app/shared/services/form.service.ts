@@ -19,7 +19,7 @@ export class FormService {
   }
 
   generateForm() {
-    this._modelInstance.getFormField().forEach(
+    this._modelInstance.getFormFields().forEach(
       (attribute) => {this._profileForm.addControl(attribute, new FormControl('', Validators.required));}
     );
   }
