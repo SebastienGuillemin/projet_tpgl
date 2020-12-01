@@ -7,7 +7,7 @@ git clone https://github.com/SebastienGuillemin/projet_tpgl.git
 cd projet_tpgl/projet
 npm install -g @angular/cli
 npm update
-ng serve
+npm start
 ```
 
 `npm start` build et lance le server angular et le server express en local.
