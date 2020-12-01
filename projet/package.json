@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "concurrently \"npm run serve-api\" \"npm run serve\"",
+    "serve": "ng serve --proxy-config proxy.config.json",
+    "serve-api": "nodemon server.js --watch node_modules/server --watch server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -20,8 +22,10 @@
     "@angular/platform-browser-dynamic": "^10.2.3",
     "@angular/router": "^10.2.3",
     "@types/jquery": "^3.5.4",
+    "concurrently": "^5.3.0",
     "express": "^4.17.1",
     "jquery": "^3.5.1",
+    "nodemon": "^2.0.6",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
