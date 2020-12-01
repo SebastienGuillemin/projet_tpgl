@@ -34,7 +34,6 @@ export class FormService {
 
   hydrate(): void {
     Object.keys(this._profileForm.controls).forEach((formElementName) => {
-      console.log(formElementName);
       this._modelInstance[formElementName] = this._profileForm.controls[formElementName].value;
     });
   }
