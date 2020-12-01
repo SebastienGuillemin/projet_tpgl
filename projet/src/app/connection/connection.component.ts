@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Output, EventEmitter } from '@angular/core'; 
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Output, EventEmitter } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import * as $ from 'jquery';
+import { User } from '../shared/model/user.model';
+import { FormService } from '../shared/services/form.service';
 
 
 @Component({
@@ -9,33 +11,31 @@ import * as $ from 'jquery';
   templateUrl: './connection.component.html',
   styleUrls: ['./connection.component.css']
 }) 
-export class ConnectionComponent {
+export class ConnectionComponent implements OnInit {
   private _showPassword: boolean;
-  profileForm: FormGroup;
+  private _user: User;
+
+  form: FormGroup;
 
   @Output() titleEmitter: EventEmitter<string> = new EventEmitter();
 
-  constructor(private _formBuilder: FormBuilder) {
+  constructor(private _formService: FormService) {
     this._showPassword = false;
-    this.profileForm = this._formBuilder.group({
-      username: ["", Validators.required],
-      password: ["", Validators.required]
-    });
+    this._user = new User();
+    this._formService.setModel(this._user);
   }
 
-  getForm(): FormGroup {
-    return this.profileForm;
+  ngOnInit(): void {
+    this.form = this._formService.getForm();
   }
 
   onSubmit(): void {
-    alert("Submit");
+    this._formService.hydrate();
+    this._user = this._formService.getModel();
+    console.log(this._user);
   }
 
-  getTitle(): string {
-    return "Connexion";
-  }
-
-  togglePassword(){
+  togglePassword(): void{
     if(!this._showPassword) {
       $("#password").prop("type", "text");
       this._showPassword = true;
@@ -44,5 +44,9 @@ export class ConnectionComponent {
       $("#password").prop("type", "password");
       this._showPassword = false;
     }
+  }
+
+  getTitle(): string {
+    return "Connexion";
   }
 }

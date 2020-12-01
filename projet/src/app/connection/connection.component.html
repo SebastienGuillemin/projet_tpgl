@@ -1,4 +1,4 @@
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="username">Nom d'utilisateur</label>
         <input type="text" class="form-control" id="username" formControlName="username">
@@ -10,5 +10,5 @@
             <button type="button" (click)="togglePassword()" class="togglePasswordButton">Afficher mot de passe</button>
         </div>
     </div>
-    <button type="submit"  class="btn btn-primary" [disabled]="!profileForm.valid">Connexion</button>
+    <button type="submit"  class="btn btn-primary" [disabled]="!form.valid">Connexion</button>
 </form>
