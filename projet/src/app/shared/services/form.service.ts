@@ -15,6 +15,7 @@ export class FormService {
 
   setModel(model: ModelFormInterface): void {
     this._modelInstance = model;
+    this.generateForm();
   }
 
   generateForm() {
