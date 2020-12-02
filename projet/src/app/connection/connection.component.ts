@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
@@ -19,7 +20,7 @@ export class ConnectionComponent implements OnInit {
 
   @Output() titleEmitter: EventEmitter<string> = new EventEmitter();
 
-  constructor(private _formService: FormService) {
+  constructor(private _formService: FormService, private _httpClient: HttpClient) {
     this._showPassword = false;
     this._user = new User();
     this._formService.setModel(this._user);
@@ -32,7 +33,7 @@ export class ConnectionComponent implements OnInit {
   onSubmit(): void {
     this._formService.hydrate();
     this._user = this._formService.getModel();
-    console.log(this._user);
+    this.postData();
   }
 
   togglePassword(): void{
@@ -48,5 +49,26 @@ export class ConnectionComponent implements OnInit {
 
   getTitle(): string {
     return "Connexion";
+  }
+
+  private postData(): void {
+    const headers = new HttpHeaders()
+          .set('Authorization', 'Access-Control-Allow-Origin')
+          .set('Content-Type', 'application/json');
+
+    this._httpClient.post('http://localhost:8080/connection', JSON.stringify(this._user), {headers: headers, responseType: 'text'})
+      .subscribe(
+        res =>{
+            if ( res == "ok" ) {
+              alert("Connecté.");
+            }
+            else if ( res == "invalid" ) {
+              alert("Nom d'utilisateur ou mot de passe invalide.");
+            }
+        },
+        err => {
+            console.log(err);
+        }
+      );
   }
 }

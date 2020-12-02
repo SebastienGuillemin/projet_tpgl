@@ -9,6 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { EtatMaterielComponent } from './etat-materiel/etat-materiel.component';
 import { CerealesComponent } from './cereales/cereales.component';
 import { FournirDonneesComponent } from './fournir-donnees/fournir-donnees.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FournirDonneesComponent } from './fournir-donnees/fournir-donnees.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
