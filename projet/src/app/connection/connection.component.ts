@@ -1,11 +1,10 @@
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import * as $ from 'jquery';
 import { User } from '../shared/model/user.model';
 import { FormService } from '../shared/services/form.service';
-
 
 @Component({
   selector: 'app-connection',
@@ -15,6 +14,8 @@ import { FormService } from '../shared/services/form.service';
 export class ConnectionComponent implements OnInit {
   private _showPassword: boolean;
   private _user: User;
+
+  private _apiUrl: string = "api/connection";
 
   form: FormGroup;
 
@@ -56,18 +57,19 @@ export class ConnectionComponent implements OnInit {
           .set('Authorization', 'Access-Control-Allow-Origin')
           .set('Content-Type', 'application/json');
 
-    this._httpClient.post('http://localhost:8080/connection', JSON.stringify(this._user), {headers: headers, responseType: 'text'})
+    this._httpClient.post(this._apiUrl, JSON.stringify(this._user), {headers: headers, observe: 'response'})
       .subscribe(
-        res =>{
-            if ( res == "ok" ) {
-              alert("Connecté.");
-            }
-            else if ( res == "invalid" ) {
-              alert("Nom d'utilisateur ou mot de passe invalide.");
-            }
+        res => {
+          if (res.ok) {
+            alert("Connecté.");
+
+            // le server express envoie l'url redirect vers page admin ou user
+          }
         },
-        err => {
-            console.log(err);
+        (err: HttpErrorResponse) => {
+          if (err.status == 401) {
+            alert("Nom d'utilisateur ou mot de passe invalide.");
+          }
         }
       );
   }

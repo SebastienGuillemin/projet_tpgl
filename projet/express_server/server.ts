@@ -9,10 +9,19 @@ const port = 8080
 app.use(cors());                    //Pour autoriser le CORD.
 app.use(bodyParser.json());       //Pour parser les corps des requêtes HTTP qui contiennent du JSON.
 
-app.post('/connection', function(req, res) {
+app.post('/api/connection', function(req, res) {
     var userConnectionService = new UserConnectionService();
-    res.status(200);
-    res.send(userConnectionService.connection(req));
+    var connectionResult = userConnectionService.connection(req);
+    
+    if (connectionResult) {
+        res.status(200);
+    }
+    else {
+        res.status(401);
+    }
+
+    // todo: redirect le server express envoie l'url redirect vers page admin ou user
+    res.send(JSON.stringify(connectionResult));
 });
 
 app.listen(port, () => {
