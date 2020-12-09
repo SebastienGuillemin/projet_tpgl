@@ -1,6 +1,5 @@
 import * as express from 'express';
-import { UserRole } from 'src/app/shared/model/UserRole';
-import { User } from 'src/app/shared/model/user.model';
+import { User, UserRole } from 'src/app/shared/model/user.model';
 
 import fs = require('fs');
 

@@ -14,8 +14,17 @@ export class UserConnectionService {
             res.status(401).send();     //Envoi du status 401.
         }
         else {
-            req.session["role"] = role;
+            user["role"] = role;
+            req.session["user"] = user;
             res.status(200).send();     //Envoi du status 200.
         }
+    }
+
+    //Retourne l'utilisateur s'il est connecté, sinon retourne 401.
+    getConnectedUser(req: express.Request, res: express.Response) {
+        if (!req.session["user"])
+            res.status(401).send();
+        else
+            res.status(200).send(JSON.stringify(req.session["user"]));
     }
 }

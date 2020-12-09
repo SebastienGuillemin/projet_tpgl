@@ -1,5 +1,9 @@
 import { ModelFormInterface } from './modelFormInterface';
-import { UserRole } from 'src/app/shared/model/UserRole';
+
+export enum UserRole {
+    Admin = "admin",
+    User = "user"
+}
 
 export class User implements ModelFormInterface {
     constructor(public username?: string, public password?: string,  public role?: UserRole) { }

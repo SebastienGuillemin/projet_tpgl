@@ -14,9 +14,13 @@ app.use(cors({credentials: true}));         //Pour autoriser le CORS.
 app.use(bodyParser.json());                 //Pour parser les corps des requêtes HTTP qui contiennent du JSON.
 
 app.post('/api/connection', function(req : express.Request, res, next) {
-    console.log(req.session);
     var userConnectionService = new UserConnectionService();
     var connectionResult = userConnectionService.connection(req, res); 
+});
+
+app.get('/api/connection', function(req : express.Request, res, next) {
+    var userConnectionService = new UserConnectionService();
+    var connectionResult = userConnectionService.getConnectedUser(req, res); 
 });
 
 app.listen(port, () => {
