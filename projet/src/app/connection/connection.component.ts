@@ -5,6 +5,7 @@ import { FormGroup } from '@angular/forms';
 import * as $ from 'jquery';
 import { User } from '../shared/model/user.model';
 import { FormService } from '../shared/services/form.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-connection',
@@ -14,26 +15,29 @@ import { FormService } from '../shared/services/form.service';
 export class ConnectionComponent implements OnInit {
   private _showPassword: boolean;
   private _user: User;
-
   private _apiUrl: string = "api/connection";
 
   form: FormGroup;
+  errors: String[];
 
   @Output() titleEmitter: EventEmitter<string> = new EventEmitter();
 
-  constructor(private _formService: FormService, private _httpClient: HttpClient) {
+  constructor(private _formService: FormService, private _httpClient: HttpClient, private _router: Router) {
     this._showPassword = false;
     this._user = new User();
-    this._formService.setModel(this._user);
+    this._formService.setModel(this._user);    
   }
 
   ngOnInit(): void {
+    // if est connecté -> rediriger vers lots de céréales.
     this.form = this._formService.getForm();
+    this.errors = [];
   }
 
   onSubmit(): void {
     this._formService.hydrate();
     this._user = this._formService.getModel();
+    this.errors = [];
     this.postData();
   }
 
@@ -57,18 +61,17 @@ export class ConnectionComponent implements OnInit {
           .set('Authorization', 'Access-Control-Allow-Origin')
           .set('Content-Type', 'application/json');
 
-    this._httpClient.post(this._apiUrl, JSON.stringify(this._user), {headers: headers, observe: 'response'})
-      .subscribe(
+    this._httpClient.post(this._apiUrl, JSON.stringify(this._user), {
+        headers: headers,
+        observe: 'response',
+        withCredentials: true //Permet d'envoyer le cookie de session.
+      }).subscribe(           //Listener sur la réponse envoyé par le serveur.
         res => {
-          if (res.ok) {
-            alert("Connecté.");
-
-            // le server express envoie l'url redirect vers page admin ou user
-          }
+          this._router.navigate(["/"]);
         },
         (err: HttpErrorResponse) => {
           if (err.status == 401) {
-            alert("Nom d'utilisateur ou mot de passe invalide.");
+            this.errors.push("Connexion échouée, nom d'utilisateur ou mot de passe invalide.");
           }
         }
       );

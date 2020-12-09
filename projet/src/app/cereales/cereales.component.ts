@@ -9,7 +9,7 @@ export class CerealesComponent {
   constructor() { }
 
   getTitle(): string {
-    return "Voir les lot de céréales";
+    return "Voir les lots de céréales";
   }
 
 }

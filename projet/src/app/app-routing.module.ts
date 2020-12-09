@@ -6,6 +6,7 @@ import { EtatMaterielComponent } from './etat-materiel/etat-materiel.component';
 import { FournirDonneesComponent } from './fournir-donnees/fournir-donnees.component';
 
 const routes: Routes = [
+  {path: '', component: ConnectionComponent},
   {path: 'connection', component: ConnectionComponent},
   {path: 'cereales', component: CerealesComponent},
   {path: 'etat-materiel', component: EtatMaterielComponent},

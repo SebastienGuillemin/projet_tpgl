@@ -11,4 +11,10 @@
         </div>
     </div>
     <button type="submit"  class="btn btn-primary" [disabled]="!form.valid">Connexion</button>
+
+    <div class="form-errors">
+        <p class="form-error text-danger" *ngFor="let error of errors">
+            {{ error}}
+        </p>
+    </div>
 </form>
