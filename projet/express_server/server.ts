@@ -6,7 +6,7 @@ import { UserConnectionService } from './Services/UserConnection';
 const app: express.Application = express();
 const port = 8080
 
-app.use(cors());                    //Pour autoriser le CORD.
+app.use(cors());                  //Pour autoriser le CORD.
 app.use(bodyParser.json());       //Pour parser les corps des requêtes HTTP qui contiennent du JSON.
 
 app.post('/api/connection', function(req, res) {
