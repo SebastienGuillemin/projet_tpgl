@@ -29,8 +29,9 @@ export class ConnectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this._connectionService.getUser() != null)
-      this._router.navigate(["/cereales"]);
+    this._connectionService.redirectIfConnected(() => this._router.navigate([ConnectionService.UrlOnConnectionSuccess]));
+      
+
     this.form = this._formService.getForm();
     this.errors = [];
   }

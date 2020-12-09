@@ -8,11 +8,12 @@ import { Router } from '@angular/router';
 })
 export class ConnectionService {
   private _apiUrl: string = "api/connection";
+  public static UrlOnConnectionSuccess = "/cereales";
 
   constructor(private _httpClient: HttpClient, private _router: Router) { }
 
   //Retourne l'utilisateur ou null (si non connecté).
-  getUser(): User {
+  redirectIfConnected(onSuccess: Function): void {
     let user: User = null;
     const headers = new HttpHeaders()
           .set('Authorization', 'Access-Control-Allow-Origin');
@@ -22,14 +23,14 @@ export class ConnectionService {
       .subscribe(
         res => {
           user =  res.body as User;
+          
+          onSuccess();
         }
       )
-      console.log(user);
-      return user;
   }
 
-  postData(user: User): String[] {
-    let errors: String[];
+  postData(user: User): Array<String> {
+    let errors = new Array<String>();
 
     const headers = new HttpHeaders()
           .set('Authorization', 'Access-Control-Allow-Origin')
@@ -41,7 +42,7 @@ export class ConnectionService {
         withCredentials: true //Permet d'envoyer le cookie de session.
       }).subscribe(           //Listener sur la réponse envoyé par le serveur.
         res => {
-          this._router.navigate(["/"]);
+          this._router.navigate([ConnectionService.UrlOnConnectionSuccess]);
         },
         (err: HttpErrorResponse) => {
           if (err.status == 401) {
