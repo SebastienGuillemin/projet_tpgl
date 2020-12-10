@@ -1,0 +1,16 @@
+<section id="lots-cereales-section">
+    <div class="lot-cereales" *ngFor="let cereale of cereales;">
+        <h2 class="cereales-title">Lot de céréales n°{{ cereale._num }}</h2>
+        <p class="cereales-type">Type : {{ cereale._type }}</p>
+        <p class="cereales-poids">Poinds : {{ cereale._poids }} kg</p>
+        <p class="cereales-qualite">Qualite : {{ cereale._qualite }}</p>
+        <p>
+            Acheminement :
+        <ul class="cereales-acheminement">
+            <li class="etape" *ngFor="let etape in cereale._acheminement">
+                Acheminement {{ cereale._acheminement }}
+            </li>
+        </ul>
+        </p>
+    </div>
+</section>
