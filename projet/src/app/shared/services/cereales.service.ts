@@ -1,17 +1,24 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Cereale } from '../model/cereale.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 //Permet de récupérer les données sur les céréales stockées dans la bd et d'envoyer de nouvelles données.
 export class CerealesService {
+  constructor(private _httpClient: HttpClient) { }
 
-  constructor() { }
+  //Retourne un Observable contenant la réponse HTTP. Le composant s'occupe lui même de la gestion de la réponse.
+  getCereales(): Observable<any> {
+    const headers = new HttpHeaders()
+          .set('Authorization', 'Access-Control-Allow-Origin');
 
-  getCereales(): Cereale[] {
-    let cereales = new Array<Cereale>();
-    cereales.push(new Cereale(1, "ok", 10, "super", ["paris", "lyon"]));
-    return cereales;
+    return this._httpClient.get("api/getCereales", {
+        headers: headers,
+        observe: 'response',
+        withCredentials: true,
+        responseType: 'json'
+      });
   }
 }

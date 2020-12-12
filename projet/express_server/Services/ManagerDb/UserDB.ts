@@ -7,7 +7,7 @@ export class UserDB {
     private users_file_path: string = 'express_server/database/user.json';
 
     getUserRole(user: User): UserRole {
-        // des node modules existe pour lire des gros fichier json de façon efficace, mais ici pas besoin
+        //des node modules existe pour lire des gros fichier json de façon efficace, mais ici pas besoin
         var users: Array<User> = JSON.parse(fs.readFileSync(this.users_file_path, 'utf8'));
 
         return users.find(u => u.username == user.username)?.role;

@@ -18,12 +18,13 @@ export class ConnectionService {
     const headers = new HttpHeaders()
           .set('Authorization', 'Access-Control-Allow-Origin');
 
-    this._httpClient.get(this._apiUrl,
-      { headers: headers, observe: 'response', withCredentials: true})
-      .subscribe(
+    this._httpClient.get(this._apiUrl, {
+        headers: headers,
+        observe: 'response',
+        withCredentials: true
+      }).subscribe(
         res => {
-          user =  res.body as User;
-          
+          user =  res.body as User;          
           onSuccess();
         }
       )

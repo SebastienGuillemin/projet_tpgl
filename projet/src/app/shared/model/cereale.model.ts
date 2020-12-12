@@ -1,10 +1,11 @@
 export class Cereale {
-    constructor (
-        private _num: number, 
-        private _type?: String,
-        private _poids?: number,
-        private _qualite?: string,
-        private _acheminement?: string[]
-    ) { }
+    constructor (               
+        public num: number, 
+        public type?: String,
+        public poids?: number,
+        public qualite?: string,
+        public acheminement?: string[]
+    ) { }                                           //Il faut que les attributs soient publiques pour que JS puisse directement créer l'instance à partir de JSON (après lecture en BD).
     
+    getNum() { return this.num; }
 }

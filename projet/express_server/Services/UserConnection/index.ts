@@ -5,7 +5,7 @@ import { ManagerDB } from '../ManagerDB';
 export class UserConnectionService {
     //Regarde dans la BD si l'utilisateur à fournit le bon couple '"username"/"password".
     //Si l'utilisateur a fourni les bonnes informations, la réponse est le code 200 sinon le code est 401.
-    connection(req: express.Request, res: express.Response) {
+    connection(req: express.Request, res: express.Response): void {
         let user = req.body as User;
         let managerDB = new ManagerDB();
         let role = managerDB.getUserRole(user); //Récupération du rôle.
@@ -21,7 +21,7 @@ export class UserConnectionService {
     }
 
     //Retourne l'utilisateur s'il est connecté, sinon retourne 401.
-    getConnectedUser(req: express.Request, res: express.Response) {
+    getConnectedUser(req: express.Request, res: express.Response): void {
         if (!req.session["user"])
             res.status(401).send();
         else
