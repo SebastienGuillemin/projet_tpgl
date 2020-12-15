@@ -15,8 +15,7 @@ jobs:
     - name: Installe dependences
       run: |
         cd projet
-        npm install
-    - name: Build
-      run: npm run build
+        npm install -g @angular/cli
+        npm update
     - name: Tests Unitaires
       run: npm test
