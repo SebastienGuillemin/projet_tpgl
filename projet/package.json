@@ -7,7 +7,7 @@
     "serve": "ng serve --proxy-config proxy.config.json",
     "serve-api": "nodemon express_server/server.ts --watch express_server",
     "build": "ng build",
-    "test": "concurrently \"npm run serve-api\" \"ng test\"",
+    "test": "ng test",
     "lint": "ng lint",
     "e2e": "concurrently \"npm run serve-api\" \"ng e2e\""
   },
