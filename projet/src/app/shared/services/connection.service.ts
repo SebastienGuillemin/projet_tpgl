@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ConnectionService {
-  private _apiUrl: string = "api/connection";
+  public static ApiUrl: string = "api/connection";
   public static UrlOnConnectionSuccess = "/cereales";
 
   constructor(private _httpClient: HttpClient, private _router: Router) { }
@@ -18,7 +18,7 @@ export class ConnectionService {
     const headers = new HttpHeaders()
           .set('Authorization', 'Access-Control-Allow-Origin');
 
-    this._httpClient.get(this._apiUrl, {
+    this._httpClient.get(ConnectionService.ApiUrl, {
         headers: headers,
         observe: 'response',
         withCredentials: true
@@ -37,7 +37,7 @@ export class ConnectionService {
           .set('Authorization', 'Access-Control-Allow-Origin')
           .set('Content-Type', 'application/json');
 
-    this._httpClient.post(this._apiUrl, JSON.stringify(user), {
+    this._httpClient.post(ConnectionService.ApiUrl, JSON.stringify(user), {
         headers: headers,
         observe: 'response',
         withCredentials: true //Permet d'envoyer le cookie de session.
