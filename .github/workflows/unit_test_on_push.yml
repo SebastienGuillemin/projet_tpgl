@@ -1,0 +1,22 @@
+name: Intégration Continue
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+    - name: Use Node.js 14.15.1
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.15.1
+    - name: Installe dependences
+      run: |
+        cd projet
+        npm install
+    - name: Build
+      run: npm run build
+    - name: Tests Unitaires
+      run: npm test
