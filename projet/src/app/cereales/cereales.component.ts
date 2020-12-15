@@ -10,12 +10,12 @@ import { Cereale } from '../shared/model/cereale.model';
 export class CerealesComponent implements OnInit {
   public cereales = [];
 
-  constructor(private _crerealesService: CerealesService) { }
+  constructor(private _cerealesService: CerealesService) { }
 
   ngOnInit(): void {
     //Ici, on récupère un obeservable qui contiendra la réponse de la requête http (voir code du service).
     //Cela permet "d'attendre" la réponse du serveur et faire quelque chose une fois que les données sont reçues.
-    this._crerealesService.getCereales()
+    this._cerealesService.getCereales()
         .subscribe(
           res => {
             for(let i = 0; i < res.body.length; i++) {    //on parcourt la liste des objets retournées par le serveur et on les utilise pour créer un nouveau lot de céréales.

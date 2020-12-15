@@ -46,4 +46,4 @@ testem.log
 Thumbs.db
 
 # Fichier debug log
-debug.log
+/debug.log
