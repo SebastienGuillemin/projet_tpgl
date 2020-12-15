@@ -8,6 +8,7 @@
     "serve-api": "nodemon express_server/server.ts --watch express_server",
     "build": "ng build",
     "test": "ng test",
+    "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "concurrently \"npm run serve-api\" \"ng e2e\""
   },
