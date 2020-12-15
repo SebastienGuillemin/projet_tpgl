@@ -20,4 +20,4 @@ jobs:
     - name: Tests Unitaires
       run: |
         cd projet
-        npm test
+        npm run test -- --browsers=ChromeHeadless
