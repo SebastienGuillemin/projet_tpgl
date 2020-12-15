@@ -9,7 +9,8 @@ import { Cereale } from '../model/cereale.model';
 })
 //Permet de récupérer les données sur les céréales stockées dans la bd et d'envoyer de nouvelles données.
 export class CerealesService {
-  private _apiUrl: string = "api/postCereales";
+  public static GetApiUrl: string = "api/getCereales";
+  public static PostApiUrl: string = "api/postCereales";
   
   constructor(private _httpClient: HttpClient, private _router: Router) { }
 
@@ -18,7 +19,7 @@ export class CerealesService {
     const headers = new HttpHeaders()
           .set('Authorization', 'Access-Control-Allow-Origin');
 
-    return this._httpClient.get("api/getCereales", {
+    return this._httpClient.get(CerealesService.GetApiUrl, {
         headers: headers,
         observe: 'response',
         withCredentials: true,
@@ -33,7 +34,7 @@ export class CerealesService {
           .set('Authorization', 'Access-Control-Allow-Origin')
           .set('Content-Type', 'application/json');
 
-    this._httpClient.post(this._apiUrl, JSON.stringify(cereale), {
+    this._httpClient.post(CerealesService.PostApiUrl, JSON.stringify(cereale), {
         headers: headers,
         observe: 'response',
         withCredentials: true //Permet d'envoyer le cookie de session.
