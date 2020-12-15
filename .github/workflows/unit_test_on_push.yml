@@ -18,4 +18,6 @@ jobs:
         npm install -g @angular/cli
         npm update
     - name: Tests Unitaires
-      run: npm test
+      run: |
+        cd projet
+        npm test
