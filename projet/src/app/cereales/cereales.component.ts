@@ -18,11 +18,11 @@ export class CerealesComponent implements OnInit {
     this._crerealesService.getCereales()
         .subscribe(
           res => {
-            this.cereales = res.body;
-            console.log(this.cereales);
+            for(let i = 0; i < res.body.length; i++) {    //on parcourt la liste des objets retournées par le serveur et on les utilise pour créer un nouveau lot de céréales.
+              this.cereales.push(Object.assign(new Cereale, res.body[i]));
+            }
         });
   }
-
   getTitle(): string {
     return "Voir les lots de céréales";
   }

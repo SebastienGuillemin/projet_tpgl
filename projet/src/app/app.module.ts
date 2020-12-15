@@ -10,6 +10,7 @@ import { EtatMaterielComponent } from './etat-materiel/etat-materiel.component';
 import { CerealesComponent } from './cereales/cereales.component';
 import { FournirDonneesComponent } from './fournir-donnees/fournir-donnees.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FournirDonneesCerealesComponent } from './fournir-donnees/fournir-donnees-cereales/fournir-donnees-cereales.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     EtatMaterielComponent,
     CerealesComponent,
-    FournirDonneesComponent
+    FournirDonneesComponent,
+    FournirDonneesCerealesComponent
   ],
   imports: [
     BrowserModule,

@@ -4,20 +4,13 @@
         "type": "Maïs",
         "poids": "25",
         "qualite": "Bonne",
-        "acheminement": [
-            "Paris",
-            "Lyon",
-            "Grenoble"
-        ]
+        "acheminement": "Paris, Lyon, Grenoble"
     },
     {
         "num": 2,
         "type": "Colza",
         "poids": "50",
         "qualite": "Très bonne",
-        "acheminement": [
-            "Bordeaux",
-            "Marseille"
-        ]
+        "acheminement": "Bordeaux, Marseille"
     }
 ]

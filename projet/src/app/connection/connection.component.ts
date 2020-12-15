@@ -30,7 +30,6 @@ export class ConnectionComponent implements OnInit {
 
   ngOnInit(): void {
     this._connectionService.redirectIfConnected(() => this._router.navigate([ConnectionService.UrlOnConnectionSuccess]));
-      
 
     this.form = this._formService.getForm();
     this.errors = [];

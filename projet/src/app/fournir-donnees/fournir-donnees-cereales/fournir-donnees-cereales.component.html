@@ -1,0 +1,38 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="num">Numéro du lot</label>
+        <input type="number" class="form-control" id="num" formControlName="num">
+    </div>
+
+    <div class="form-group">
+        <label for="type">Type de céréales</label>
+        <input type="text" class="form-control" id="type" formControlName="type">
+    </div>
+
+    <div class="form-group">
+        <label for="poids">Poids (en kg)</label>
+        <input type="number" class="form-control" id="poids" formControlName="poids">
+    </div>
+
+    <div class="form-group">
+        <label for="qualite">Qualité</label>
+        <select class="form-control" id="qualite" formControlName="qualite">
+            <option *ngFor="let qualite of qualites" [ngValue]="qualite">
+              {{ qualite }}
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="acheminement">Acheminement</label>
+        <input class="form-control" id="acheminement" formControlName="acheminement">
+    </div>
+
+    <button type="submit"  class="btn btn-primary" [disabled]="!form.valid">Valider</button>
+
+    <div class="form-errors">
+        <p class="form-error text-danger" *ngFor="let error of errors">
+            {{ error}}
+        </p>
+    </div>
+</form>

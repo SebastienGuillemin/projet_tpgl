@@ -6,7 +6,7 @@
         <p class="cereales-qualite">Qualite : {{ cereale.qualite }}</p>
         <p>Acheminement :</p>
         <ul class="cereales-acheminement">
-            <li class="etape" *ngFor="let etape of cereale.acheminement;">
+            <li class="etape" *ngFor="let etape of cereale.getAcheminementList();">
                 {{ etape }}
             </li>
         </ul>
