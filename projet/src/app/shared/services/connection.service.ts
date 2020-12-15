@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../model/user.model';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,18 +31,22 @@ export class ConnectionService {
       )
   }
 
+  postObservable(user: User): Observable<any> {
+    const headers = new HttpHeaders()
+      .set('Authorization', 'Access-Control-Allow-Origin')
+      .set('Content-Type', 'application/json');
+
+    return this._httpClient.post(ConnectionService.ApiUrl, JSON.stringify(user), {
+      headers: headers,
+      observe: 'response',
+      withCredentials: true //Permet d'envoyer le cookie de session.
+    });
+  }
+
   postData(user: User): Array<string> {
     let errors = new Array<string>();
 
-    const headers = new HttpHeaders()
-          .set('Authorization', 'Access-Control-Allow-Origin')
-          .set('Content-Type', 'application/json');
-
-    this._httpClient.post(ConnectionService.ApiUrl, JSON.stringify(user), {
-        headers: headers,
-        observe: 'response',
-        withCredentials: true //Permet d'envoyer le cookie de session.
-      }).subscribe(           //Listener sur la réponse envoyé par le serveur.
+    this.postObservable(user).subscribe(           //Listener sur la réponse envoyé par le serveur.
         res => {
           this._router.navigate([ConnectionService.UrlOnConnectionSuccess]);
         },
