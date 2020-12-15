@@ -8,6 +8,16 @@ main, nav {
     cursor: not-allowed;
 }
 
+
+/* Header */
+.nav-link {
+    font-size: large;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link  {
+    color: rgb(0, 183, 255);
+}
+
 /* Formulaires */
 .form-errors {
     margin: 10px 0px;
