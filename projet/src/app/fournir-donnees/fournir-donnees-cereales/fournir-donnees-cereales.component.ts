@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormService } from 'src/app/shared/services/form.service';
 import { Cereale } from 'src/app/shared/model/cereale.model';
 import { FormGroup } from '@angular/forms';
+import { CerealesService } from 'src/app/shared/services/cereales.service';
 
 @Component({
   selector: 'app-fournir-donnees-cereales',
@@ -20,7 +21,7 @@ export class FournirDonneesCerealesComponent implements OnInit {
     "Très bonne"
   ];
 
-  constructor(private _formService: FormService) {
+  constructor(private _formService: FormService, private _cerealesService: CerealesService) {
     this._cereale = new Cereale();  //création d'un nouveau lot de céréale vide.
     this._formService.setModel(this._cereale);    //passage de ce lot au service de formulaire.
   }
@@ -32,6 +33,6 @@ export class FournirDonneesCerealesComponent implements OnInit {
   onSubmit(): void {
     this._formService.hydrate();
     this._cereale = this._formService.getModel() as Cereale;
-    console.log(this._cereale)
+    let errors = this._cerealesService.postData(this._cereale);
   }
 }
