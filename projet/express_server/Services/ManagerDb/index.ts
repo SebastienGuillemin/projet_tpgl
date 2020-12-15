@@ -1,8 +1,10 @@
-import { Response } from 'express';
+import { Request, Response } from 'express';
 import { User, UserRole } from 'src/app/shared/model/user.model';
 import { UserDB } from './UserDB';
 import { CerealeDB } from './CerealeDB';
 
+//Cette classe permet de gérer les différents composants qui interagissent avec la BD.
+//Elle permet de faire des manipulations avant qu'un composant n'agisse sur la BD ou après qu'un composant ait renvoyé une valeur.
 export class ManagerDB {
     
     getUserRole(user: User): UserRole {
@@ -14,5 +16,10 @@ export class ManagerDB {
         let cerealeDB = new CerealeDB();
         let cereales = cerealeDB.getLotsCereales();
         res.status(200).json(cereales);
+    }
+
+    updateCereales(req : Request, res: Response): void {
+        let cerealeDB = new CerealeDB();
+        cerealeDB.updateCereales(req, res);
     }
 }
