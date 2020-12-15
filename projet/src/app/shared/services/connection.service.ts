@@ -30,8 +30,8 @@ export class ConnectionService {
       )
   }
 
-  postData(user: User): Array<String> {
-    let errors = new Array<String>();
+  postData(user: User): Array<string> {
+    let errors = new Array<string>();
 
     const headers = new HttpHeaders()
           .set('Authorization', 'Access-Control-Allow-Origin')
