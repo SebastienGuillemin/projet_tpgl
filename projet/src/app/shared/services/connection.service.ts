@@ -54,6 +54,9 @@ export class ConnectionService {
           if (err.status == 401) {
             errors.push("Connexion échouée, nom d'utilisateur ou mot de passe invalide.");
           }
+          else {
+            errors.push("Code d'erreur : " + err.status + ".\nUne erreur est survenue, merci de réessayer plus tard.");
+          }
         }
       );
 

@@ -21,18 +21,26 @@ export class FournirDonneesCerealesComponent implements OnInit {
     "Très bonne"
   ];
 
-  constructor(private _formService: FormService, private _cerealesService: CerealesService) {
-    this._cereale = new Cereale();  //création d'un nouveau lot de céréale vide.
-    this._formService.setModel(this._cereale);    //passage de ce lot au service de formulaire.
-  }
+  constructor(private _formService: FormService, private _cerealesService: CerealesService) { }
 
-  ngOnInit(): void { 
-    this.form  = this._formService.getForm(); //récupération du formulaire.
+  ngOnInit(): void {
+    //Les deux lignes suivantes se trouvent dans ngOnInit afin de pouvoir recharger le formulaire.
+    this._cereale = new Cereale();                //création d'un nouveau lot de céréale vide.
+    this._formService.setModel(this._cereale);    //passage de ce lot au service de formulaire.
+    this.form = this._formService.getForm();     //récupération du formulaire.
+    console.log("init");
+    console.log(this._cereale);
   }
 
   onSubmit(): void {
     this._formService.hydrate();
     this._cereale = this._formService.getModel() as Cereale;
     let errors = this._cerealesService.postData(this._cereale);
+    if (errors.length > 0) {
+      this.errors = errors;
+    }
+    else {
+      this.ngOnInit();  //rafraichissement du composant.
+    }
   }
 }

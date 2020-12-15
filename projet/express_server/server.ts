@@ -24,6 +24,11 @@ app.get('/api/connection', function(req : express.Request, res) {
     userConnectionService.getConnectedUser(req, res); 
 });
 
+app.post('/api/postCereales', function(req : express.Request, res) {
+    let manager = new ManagerDB();
+    manager.updateCereales(req, res);
+});
+
 app.get("/api/getCereales", function(req: express.Request, res) {
     let manager = new ManagerDB();
     manager.getLotsCereales(res);

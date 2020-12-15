@@ -43,7 +43,7 @@ export class CerealesService {
           //rien à faire.
         },
         (err: HttpErrorResponse) => {
-          errors.push("Une erreur est survenue, merci de réessayer plus tard.");
+            errors.push("Code d'erreur : " + err.status + ".\nUne erreur est survenue, merci de réessayer plus tard.");
         }
       );
 

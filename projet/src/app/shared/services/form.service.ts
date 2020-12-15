@@ -9,9 +9,7 @@ export class FormService {
   private _profileForm: FormGroup;
   private _modelInstance: ModelFormInterface
 
-  constructor() {
-    this._profileForm = new FormGroup({});
-  }
+  constructor() { }
 
   setModel(model: ModelFormInterface): void {
     this._modelInstance = model;
@@ -19,6 +17,7 @@ export class FormService {
   }
 
   private generateForm(): void {
+    this._profileForm = new FormGroup({});
     this._modelInstance.getFormFields().forEach(
       (attribute) => {this._profileForm.addControl(attribute, new FormControl('', Validators.required));}
     );
