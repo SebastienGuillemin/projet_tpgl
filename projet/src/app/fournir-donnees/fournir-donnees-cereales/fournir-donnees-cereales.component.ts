@@ -28,8 +28,6 @@ export class FournirDonneesCerealesComponent implements OnInit {
     this._cereale = new Cereale();                //création d'un nouveau lot de céréale vide.
     this._formService.setModel(this._cereale);    //passage de ce lot au service de formulaire.
     this.form = this._formService.getForm();     //récupération du formulaire.
-    console.log("init");
-    console.log(this._cereale);
   }
 
   onSubmit(): void {
