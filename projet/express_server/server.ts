@@ -34,6 +34,12 @@ app.get("/api/getCereales", function(req: express.Request, res) {
     manager.getLotsCereales(res);
 });
 
+
+app.get("/api/getMateriels", function(req: express.Request, res) {
+    let manager = new ManagerDB();
+    manager.getMateriels(res);
+});
+
 app.listen(port, () => {
     console.log(`Server express lancé sur le port ${port}`);
 })

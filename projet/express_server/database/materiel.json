@@ -1,0 +1,38 @@
+[
+    {
+        "nom": "Alarme",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Boisseau",
+        "etat": "Bon"
+    },
+    {
+        "nom": "ElevateurGodet",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Fosse",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Pont Bascule",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Silo",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Sonde",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Systeme ventilation",
+        "etat": "Moyen"
+    },
+    {
+        "nom": "Tour de manutention" ,
+        "etat": "Moyen"
+    }
+]

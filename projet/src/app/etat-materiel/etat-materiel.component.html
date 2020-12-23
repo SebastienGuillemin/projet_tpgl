@@ -1,45 +1,18 @@
-<div class="div_principale">
-
-<div class="div-categoryContainer">
-     
-    <img src="https://cdn.tutsplus.com/vector/uploads/2014/03/gem-PW-diamond.jpg"  class="picture-left">
-   
-    <div class="paragraph-right">
-      <h2>Titre du paragraphsrhsfge</h2>
-     <button>Faire action 1</button>
-    </div>
-  </div>
-
-  <div class="div-categoryContainer">
-     
-    <img src="https://cdn.tutsplus.com/vector/uploads/2014/03/gem-PW-diamond.jpg" class="picture-left">
-   
-    <div class="paragraph-right">
-      <h2>Titre du paragraphe</h2>
-      <button>Faire action 2</button>
-    </div>
-  </div>
-
-  <div class="div-categoryContainer">
-     
-    <img src="https://cdn.tutsplus.com/vector/uploads/2014/03/gem-PW-diamond.jpg" class="picture-left">
-   
-    <div class="paragraph-right">
-      <h2>Titre du paragraphe</h2>
-      <button>Faire action 3</button>
-    </div>
-  </div>
-
-  <div class="div-categoryContainer">
-     
-    <img src="https://cdn.tutsplus.com/vector/uploads/2014/03/gem-PW-diamond.jpg" class="picture-left">
-   
-    <div class="paragraph-right">
-      <h2>Titre du paragraphe</h2>
-      <button>Faire action 4</button>
-    </div>
-  </div>
-
-  
-  
+<!--
+<div>
+      <div class="materiel" *ngFor="let machine of materiels;">
+        <img src="https://cdn.tutsplus.com/vector/uploads/2014/03/gem-PW-diamond.jpg"  class="picture-left">
+        <h3> Description : </h3>
+        <h2> Nom Machine : {{ machine.nom }} </h2>
+        <h2> Etat : {{ machine.etat }} </h2>
+      </div>
+  </section>
 </div>
+
+
+-->
+  <div  *ngFor="let materiel of materiels">
+      <h2>Nom du matériel : {{ materiel.nom }}</h2>
+      <p>Etat : {{ materiel.etat }}</p>
+
+  </div>
