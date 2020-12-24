@@ -1,4 +1,3 @@
-import { exception } from 'console';
 import { ModelFormInterface } from './modelFormInterface';
 
 //Il faudrait que cette classe soit abstraite. Seulement, si ell eest abstraite, onne peut plus générer le formulaire dynamiquement ...
