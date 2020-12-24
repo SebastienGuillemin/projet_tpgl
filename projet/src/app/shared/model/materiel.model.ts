@@ -29,8 +29,13 @@ export class Materiel implements ModelFormInterface {
     getActionLabel(): string {
         return this.labels[this.getEtatIndex()];
     }
-    
+
+    getEtats(): string[] {
+        return this.etats;
+    }
+
     getFormFields(): string[] {
         return ["nom", "etat"];
     }
+
 }

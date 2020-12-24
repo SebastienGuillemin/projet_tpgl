@@ -17,7 +17,7 @@ import { Ventillation } from '../model/materiels/ventillation.model';
 export class MaterielFactoryService {
   constructor() { }
 
-  createMateriel(type: string, nom: string, etat: string): Materiel {
+  createMateriel(type: string, nom?: string, etat?: string): Materiel {
     switch (type) {
       case "Silo" : return new Silo(nom, etat);
       case "Cellule" : return new Cellule(nom, etat);

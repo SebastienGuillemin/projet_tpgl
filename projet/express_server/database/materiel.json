@@ -1,7 +1,7 @@
 [
     {
         "nom": "Silo",
-        "etat": "Vide",
+        "etat": "dqzdqd",
         "type": "Silo"
     },
     {
@@ -91,7 +91,7 @@
     },
     {
         "nom": "Alarme",
-        "etat": "Éteinte",
+        "etat": "Sonne",
         "type": "Alarme"
     },
     {

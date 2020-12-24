@@ -2,8 +2,8 @@
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
-        <label for="nom">Nom de la machine</label>
-        <select class="form-control" id="nom" formControlName="nom">
+        <label for="nom">Nom du matériel</label>
+        <select class="form-control" id="nom" (change)="onChange($event.target.value)" formControlName="nom">
             <option *ngFor="let nom of noms" [ngValue]="nom">
               {{ nom }}
             </option>
@@ -11,8 +11,12 @@
     </div>
 
     <div class="form-group">
-        <label for="etat">Etat de la machine</label>
-        <input type="text" class="form-control" id="etat" formControlName="etat">
+        <label for="nom">État du matériel</label>
+        <select class="form-control" id="etat" formControlName="etat">
+            <option *ngFor="let etat of listEtats" [ngValue]="etat">
+              {{ etat }}
+            </option>
+        </select>
     </div>
 
     <button type="submit"  class="btn btn-primary" [disabled]="!form.valid">Valider</button>
