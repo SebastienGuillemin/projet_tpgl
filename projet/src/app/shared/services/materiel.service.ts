@@ -32,7 +32,6 @@ export class MaterielService {
         });
     }
 
-
     updateData(materiel: Materiel): Observable<any> {
         const headers = new HttpHeaders()
             .set('Authorization', 'Access-Control-Allow-Origin')
@@ -44,5 +43,4 @@ export class MaterielService {
             withCredentials: true // Permet d'envoyer le cookie de session.
         });
     }
-
 }

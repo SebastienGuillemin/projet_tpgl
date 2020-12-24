@@ -17,26 +17,29 @@ export class FournirDonneesMaterielComponent implements OnInit {
 
     errors: String[];
     form: FormGroup;
-    noms = [
-        'Alarme',
-        'Boisseau',
-        'ElevateurGodet',
-        'Fosse',
-        'Pont Bascule',
-        'Silo',
-        'Sonde',
-        'Systeme ventilation',
-        'Tour de manutention'
-    ];
+    noms: String[];
 
     constructor(private _materielService: MaterielService) {
         this._formService = new FormService();
+        //Comme les noms ne changent jamais, il faut juste les récupérer une seule fois.
+        this.noms = [];
+        this._getNomMateriels();
+    }
+
+    private _getNomMateriels(): void {
+        this._materielService.getMateriels().subscribe(
+            res => {
+                res.body.forEach(element => {
+                    this.noms.push(element["nom"]);
+                });
+            }
+        );
     }
     
     ngOnInit(): void {
-        this.errors = [];
         this._materiel = new Materiel();
         this._formService.setModel(this._materiel);
+        this.errors = [];
         this.form = this._formService.getForm();
     }
 

@@ -12,7 +12,6 @@ export class MaterielDB {
 
     updateMateriels(req: Request, res: Response) {
         const data = req.body;
-        console.log(req.body);
         let nom = data['nom'];
         const materiels = JSON.parse(fs.readFileSync(this.materiel_file_path, 'utf8'));
         const idx = materiels.findIndex(x => x.nom === nom);
@@ -26,7 +25,6 @@ export class MaterielDB {
                     console.log('Erreur mise à jour Materiel', err);
                 }
                 else {
-                    console.log('ok');
                     res.status(200).send();
                 }
             }

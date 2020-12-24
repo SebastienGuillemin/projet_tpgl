@@ -14,9 +14,9 @@ export class ManagerDB {
     }
 
     getUser(user: User): User {
-    let userDB = new UserDB();
-    return userDB.getUser(user);
-  }
+        let userDB = new UserDB();
+        return userDB.getUser(user);
+    }
 
     getLotsCereales(res: Response): void {
         let cerealeDB = new CerealeDB();
@@ -34,6 +34,7 @@ export class ManagerDB {
         let materiels = materielDB.getMateriels();
         res.json(materiels);
     }
+    
     updateMateriels(req: Request, res: Response): void {
         let materielDB = new MaterielDB();
         materielDB.updateMateriels(req, res);
