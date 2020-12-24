@@ -9,7 +9,7 @@
     },
     {
         "nom": "ElevateurGodet",
-        "etat": "Bon"
+        "etat": "Mauvais"
     },
     {
         "nom": "Fosse",
@@ -32,7 +32,7 @@
         "etat": "Moyen"
     },
     {
-        "nom": "Tour de manutention" ,
+        "nom": "Tour de manutention",
         "etat": "Moyen"
     }
 ]

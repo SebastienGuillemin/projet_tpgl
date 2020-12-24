@@ -1,16 +1,16 @@
 [
     {
         "num": 1,
-        "type": "fgdfg",
-        "poids": 1,
-        "qualite": "Très bonne",
-        "acheminement": "Thierry grison"
-    },
-    {
-        "num": 1222,
-        "type": "fgdfg",
+        "type": "1",
         "poids": 1,
         "qualite": "Bonne",
-        "acheminement": "fff"
+        "acheminement": "Lyon, Paris, Nantes"
+    },
+    {
+        "num": 2,
+        "type": "Orge",
+        "poids": 200,
+        "qualite": "Très bonne",
+        "acheminement": "Marseille, Nice"
     }
 ]

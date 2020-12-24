@@ -11,6 +11,9 @@ import { CerealesService } from 'src/app/shared/services/cereales.service';
 })
 export class FournirDonneesCerealesComponent implements OnInit {
   private _cereale: Cereale;
+  //Il n'est pas possible d'injecter ce service dans le constructeur car il le faut aussi pour mettre à jour le matériel.
+  //Or, si un service est injecté dans le constructeur, seul une instance est créée pour tous les composants actifs ce qui pose problème dans notre cas car deux composant l'utilisent.
+  private _formService: FormService;  
 
   form: FormGroup;
   errors: String[];
@@ -21,11 +24,12 @@ export class FournirDonneesCerealesComponent implements OnInit {
     "Très bonne"
   ];
 
-  constructor(private _formService: FormService, private _cerealesService: CerealesService) { }
+  constructor(private _cerealesService: CerealesService) { }
 
   ngOnInit(): void {
     //Les deux lignes suivantes se trouvent dans ngOnInit afin de pouvoir recharger le formulaire.
     this._cereale = new Cereale();                //création d'un nouveau lot de céréale vide.
+    this._formService = new FormService();
     this._formService.setModel(this._cereale);    //passage de ce lot au service de formulaire.
     this.form = this._formService.getForm();     //récupération du formulaire.
   }

@@ -29,7 +29,6 @@ export class ManagerDB {
         cerealeDB.updateCereales(req, res);
     }
 
-
     getMateriels(res: Response): void {
         let materielDB = new MaterielDB();
         let materiels = materielDB.getMateriels();
