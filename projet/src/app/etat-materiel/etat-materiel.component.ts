@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Materiel } from '../shared/model/materiel.model';
 import { MaterielFactoryService } from '../shared/services/materiel-factory.service';
@@ -35,6 +36,13 @@ export class EtatMaterielComponent implements OnInit {
 
   actionMateriel(index): void {
     this.materiels[index].action();
-    this._materielService.updateData(this.materiels[index]);
+    this._materielService.updateData(this.materiels[index]).subscribe(           // Listener sur la réponse envoyé par le serveur.
+      res => {
+          //On ne fait rien.
+      },
+      (err: HttpErrorResponse) => {
+          alert('Code d\'erreur : ' + err.status + '.\nUne erreur est survenue, merci de réessayer plus tard.');
+      }
+  );
   }
 }

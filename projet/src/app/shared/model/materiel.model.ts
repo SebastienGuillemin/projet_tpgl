@@ -1,8 +1,8 @@
-import { MaterielService } from '../services/materiel.service';
 import { ModelFormInterface } from './modelFormInterface';
 
-//Il faudrait que cette classe soit abstraite. Seulement, si ell eest abstraite, onne peut plus générer le formulaire dynamiquement ...
 export class Materiel implements ModelFormInterface {
+    etats = ["", ""];   //COntient les états que peut prendre le matériel.
+    labels = ["", ""];  //Contient les lables à afficher en fonction des états.
 
     constructor (               
         public nom?: string, 
@@ -16,14 +16,18 @@ export class Materiel implements ModelFormInterface {
       return "[" + this.type + "]" + this.nom + " : "  + this.etat;
     }
 
-    //Execute une action. Comme chaque matériel fait une action différente, il faut que cette méthode soit implémenter par les classe filles.
-    action(): void {
-        throw new Error("Impossible d'éxécuter un ordre pour un matériel générique.");
+    //Permet de retourner l'index de l'état actuel dans la liste des états.
+    getEtatIndex(): number {
+        return this.etats.findIndex((element) => element == this.etat);
     }
-    
-    //Retourne le label à mettre sur le bouton de l'action.
-    getActionLabel(): string{
-        throw new Error("Label indisponible pour un matériel générique.");
+
+    //Pour tous les matériels il n'y a que deux états. Ceci permet de faire passer d'un état à l'autre.
+    action(): void {
+        this.etat = this.etats[1 - this.getEtatIndex()];
+    }
+
+    getActionLabel(): string {
+        return this.labels[this.getEtatIndex()];
     }
     
     getFormFields(): string[] {

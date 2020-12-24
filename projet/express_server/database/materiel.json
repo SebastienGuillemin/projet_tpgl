@@ -1,102 +1,102 @@
 [
     {
         "nom": "Silo",
-        "etat": "Bon",
+        "etat": "Vide",
         "type": "Silo"
     },
     {
         "nom": "Cellule1",
-        "etat": "Bon",
+        "etat": "Vide",
         "type": "Cellule"
     },
     {
         "nom": "Cellule2",
-        "etat": "Bon",
+        "etat": "Vide",
         "type": "Cellule"
     },
     {
         "nom": "Cellule3",
-        "etat": "Bon",
+        "etat": "Vide",
         "type": "Cellule"
     },
     {
         "nom": "Cellule4",
-        "etat": "Bon",
+        "etat": "Vide",
         "type": "Cellule"
     },
     {
         "nom": "Cellule5",
-        "etat": "Bon",
+        "etat": "Vide",
         "type": "Cellule"
     },
     {
         "nom": "Cellule6",
-        "etat": "Bon",
+        "etat": "Vide",
         "type": "Cellule"
     },
     {
         "nom": "Cellule7",
-        "etat": "Bon",
+        "etat": "Vide",
         "type": "Cellule"
     },
     {
         "nom": "Cellule8",
-        "etat": "Bon",
+        "etat": "Vide",
         "type": "Cellule"
     },
     {
         "nom": "Cellule9",
-        "etat": "Bon",
+        "etat": "Vide",
         "type": "Cellule"
     },
     {
         "nom": "Cellule10",
-        "etat": "Bon",
+        "etat": "Vide",
         "type": "Cellule"
     },
     {
         "nom": "Tour de manutention",
-        "etat": "Moyen",
+        "etat": "Éteinte",
         "type": "TourManutention"
     },
     {
         "nom": "Boisseau1",
-        "etat": "Bon",
+        "etat": "Vide",
         "type": "Boisseau"
     },
     {
         "nom": "Boisseau2",
-        "etat": "Bon",
+        "etat": "Vide",
         "type": "Boisseau"
     },
     {
         "nom": "Boisseau3",
-        "etat": "Bon",
+        "etat": "Plein",
         "type": "Boisseau"
     },
     {
         "nom": "Fosse1",
-        "etat": "Bon",
+        "etat": "Vide",
         "type": "Fosse"
     },
     {
         "nom": "Fosse2",
-        "etat": "Bon",
+        "etat": "Vide",
         "type": "Fosse"
     },
     {
         "nom": "Systeme ventilation",
-        "etat": "Moyen",
+        "etat": "Éteinte",
         "type": "Ventillation"
     },
     {
         "nom": "Alarme",
-        "etat": "Sonne",
+        "etat": "Éteinte",
         "type": "Alarme"
     },
     {
         "nom": "Elevateur Godet",
-        "etat": "Mauvais",
+        "etat": "Arret",
         "type": "ElevateurGodet"
     },
     {
@@ -106,7 +106,7 @@
     },
     {
         "nom": "Sonde",
-        "etat": "ok",
+        "etat": "Éteinte",
         "type": "Sonde"
     }
 ]
