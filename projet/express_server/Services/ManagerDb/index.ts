@@ -13,6 +13,11 @@ export class ManagerDB {
         return userDB.getUserRole(user);
     }
 
+    getUser(user: User): User {
+    let userDB = new UserDB();
+    return userDB.getUser(user);
+  }
+
     getLotsCereales(res: Response): void {
         let cerealeDB = new CerealeDB();
         let cereales = cerealeDB.getLotsCereales();
