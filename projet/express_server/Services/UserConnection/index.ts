@@ -10,7 +10,7 @@ export class UserConnectionService {
         let managerDB = new ManagerDB();
         let user_db = managerDB.getUser(user);
 
-        if (user_db.role === undefined) {
+        if (user_db?.role === undefined) {
             res.status(401).send();
         }
         else if (user['password'] === user_db.password) {
