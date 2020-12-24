@@ -12,7 +12,6 @@ export class CerealeDB {
 
     updateCereales(req : Request, res: Response) {
         let data = req.body;
-        console.log(data);
         let cereales = JSON.parse(fs.readFileSync(this.cereales_file_path, 'utf8'));
         cereales.push({
             "num"           : data["num"],

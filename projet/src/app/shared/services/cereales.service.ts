@@ -5,48 +5,37 @@ import { Observable } from 'rxjs';
 import { Cereale } from '../model/cereale.model';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 //Permet de récupérer les données sur les céréales stockées dans la bd et d'envoyer de nouvelles données.
 export class CerealesService {
-  public static GetApiUrl: string = "api/getCereales";
-  public static PostApiUrl: string = "api/postCereales";
-  
-  constructor(private _httpClient: HttpClient, private _router: Router) { }
+    public static GetApiUrl: string = "api/getCereales";
+    public static PostApiUrl: string = "api/postCereales";
 
-  //Retourne un Observable contenant la réponse HTTP. Le composant s'occupe lui même de la gestion de la réponse.
-  getCereales(): Observable<any> {
-    const headers = new HttpHeaders()
-          .set('Authorization', 'Access-Control-Allow-Origin');
+    constructor(private _httpClient: HttpClient, private _router: Router) { }
 
-    return this._httpClient.get(CerealesService.GetApiUrl, {
-        headers: headers,
-        observe: 'response',
-        withCredentials: true,
-        responseType: 'json'
-      });
-  }
+    //Retourne un Observable contenant la réponse HTTP. Le composant s'occupe lui même de la gestion de la réponse.
+    getCereales(): Observable<any> {
+        const headers = new HttpHeaders()
+            .set('Authorization', 'Access-Control-Allow-Origin');
 
-  postData(cereale: Cereale): string[] {
-    let errors = new Array<string>();
+        return this._httpClient.get(CerealesService.GetApiUrl, {
+            headers: headers,
+            observe: 'response',
+            withCredentials: true,
+            responseType: 'json'
+        });
+    }
 
-    const headers = new HttpHeaders()
-          .set('Authorization', 'Access-Control-Allow-Origin')
-          .set('Content-Type', 'application/json');
+    postData(cereale: Cereale): Observable<any> {
+        const headers = new HttpHeaders()
+            .set('Authorization', 'Access-Control-Allow-Origin')
+            .set('Content-Type', 'application/json');
 
-    this._httpClient.post(CerealesService.PostApiUrl, JSON.stringify(cereale), {
-        headers: headers,
-        observe: 'response',
-        withCredentials: true //Permet d'envoyer le cookie de session.
-      }).subscribe(           //Listener sur la réponse envoyé par le serveur.
-        res => {
-          //rien à faire.
-        },
-        (err: HttpErrorResponse) => {
-            errors.push("Code d'erreur : " + err.status + ".\nUne erreur est survenue, merci de réessayer plus tard.");
-        }
-      );
-
-      return errors;
-  }
+        return this._httpClient.post(CerealesService.PostApiUrl, JSON.stringify(cereale), {
+            headers: headers,
+            observe: 'response',
+            withCredentials: true //Permet d'envoyer le cookie de session.
+        });
+    }
 }

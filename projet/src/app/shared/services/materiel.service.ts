@@ -45,7 +45,7 @@ export class MaterielService {
             withCredentials: true // Permet d'envoyer le cookie de session.
         }).subscribe(           // Listener sur la réponse envoyé par le serveur.
             res => {
-                this._router.navigate([MaterielService.etatMaterialUrl]);
+                //this._router.navigate([MaterielService.etatMaterialUrl]); //Vraiment util ? Si on veut mettre à jour plusieurs matériels c'est chiant
             },
             (err: HttpErrorResponse) => {
                 errors.push('Code d\'erreur : ' + err.status + '.\nUne erreur est survenue, merci de réessayer plus tard.');
