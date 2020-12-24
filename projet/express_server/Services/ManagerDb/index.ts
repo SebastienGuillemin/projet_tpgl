@@ -7,7 +7,7 @@ import { MaterielDB } from './MaterielDB';
 //Cette classe permet de gérer les différents composants qui interagissent avec la BD.
 //Elle permet de faire des manipulations avant qu'un composant n'agisse sur la BD ou après qu'un composant ait renvoyé une valeur.
 export class ManagerDB {
-    
+
     getUserRole(user: User): UserRole {
         let userDB = new UserDB();
         return userDB.getUserRole(user);
@@ -19,15 +19,19 @@ export class ManagerDB {
         res.status(200).json(cereales);
     }
 
-    updateCereales(req : Request, res: Response): void {
+    updateCereales(req: Request, res: Response): void {
         let cerealeDB = new CerealeDB();
         cerealeDB.updateCereales(req, res);
     }
 
-  
+
     getMateriels(res: Response): void {
         let materielDB = new MaterielDB();
         let materiels = materielDB.getMateriels();
         res.json(materiels);
+    }
+    updateMateriels(req: Request, res: Response): void {
+        let materielDB = new MaterielDB();
+        materielDB.updateMateriels(req, res);
     }
 }
