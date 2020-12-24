@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Materiel } from '../model/materiel.model';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 
 
@@ -21,38 +21,38 @@ export class MaterielService {
 
     // Retourne un Observable contenant la réponse HTTP. Le composant s'occupe lui même de la gestion de la réponse.
     getMateriels(): Observable<any> {
-      const headers = new HttpHeaders()
+        const headers = new HttpHeaders()
             .set('Authorization', 'Access-Control-Allow-Origin');
 
-      return this._httpClient.get(MaterielService.GetApiUrl, {
-          headers: headers,
-          observe: 'response',
-          withCredentials: true,
-          responseType: 'json'
+        return this._httpClient.get(MaterielService.GetApiUrl, {
+            headers: headers,
+            observe: 'response',
+            withCredentials: true,
+            responseType: 'json'
         });
     }
 
 
-  updateData(materiel: Materiel): string[] {
-      let errors = new Array<string>();
-      const headers = new HttpHeaders()
-        .set('Authorization', 'Access-Control-Allow-Origin')
-        .set('Content-Type', 'application/json');
+    updateData(materiel: Materiel): string[] {
+        let errors = new Array<string>();
+        const headers = new HttpHeaders()
+            .set('Authorization', 'Access-Control-Allow-Origin')
+            .set('Content-Type', 'application/json');
 
-      this._httpClient.post(MaterielService.UpdateApiUrl, JSON.stringify(materiel), {
-          headers: headers,
-          observe: 'response',
-          withCredentials: true // Permet d'envoyer le cookie de session.
+        this._httpClient.post(MaterielService.UpdateApiUrl, JSON.stringify(materiel), {
+            headers: headers,
+            observe: 'response',
+            withCredentials: true // Permet d'envoyer le cookie de session.
         }).subscribe(           // Listener sur la réponse envoyé par le serveur.
-          res => {
-            this._router.navigate([MaterielService.etatMaterialUrl]);
-          },
-          (err: HttpErrorResponse) => {
-              errors.push('Code d\'erreur : ' + err.status + '.\nUne erreur est survenue, merci de réessayer plus tard.');
-          }
+            res => {
+                this._router.navigate([MaterielService.etatMaterialUrl]);
+            },
+            (err: HttpErrorResponse) => {
+                errors.push('Code d\'erreur : ' + err.status + '.\nUne erreur est survenue, merci de réessayer plus tard.');
+            }
         );
 
-      return errors;
+        return errors;
     }
 
-  }
+}
