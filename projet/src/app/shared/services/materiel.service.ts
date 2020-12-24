@@ -13,7 +13,7 @@ import { Materiel } from '../model/materiel.model';
 export class MaterielService {
     public static GetApiUrl = 'api/getMateriels';
     public static UpdateApiUrl = 'api/updateMateriels';
-    public static etatMaterialUrl = '//tat-materiel';
+    public static etatMaterialUrl = '/etat-materiel';
 
     // public static PostApiUrl: string = "api/postCereales";
 
