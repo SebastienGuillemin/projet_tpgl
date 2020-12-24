@@ -31,10 +31,10 @@ export class FournirDonneesMaterielComponent implements OnInit {
 
     constructor(private _materielService: MaterielService) {
         this._formService = new FormService();
-        this.errors = [];
     }
-
+    
     ngOnInit(): void {
+        this.errors = [];
         this._materiel = new Materiel();
         this._formService.setModel(this._materiel);
         this.form = this._formService.getForm();

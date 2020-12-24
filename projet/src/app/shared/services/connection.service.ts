@@ -5,61 +5,41 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ConnectionService {
-  public static ApiUrl: string = "api/connection";
-  public static UrlOnConnectionSuccess = "/cereales";
+    public static ApiUrl: string = "api/connection";
+    public static UrlOnConnectionSuccess = "/cereales";
 
-  constructor(private _httpClient: HttpClient, private _router: Router) { }
+    constructor(private _httpClient: HttpClient, private _router: Router) { }
 
-  //Retourne l'utilisateur ou null (si non connecté).
-  redirectIfConnected(onSuccess: Function): void {
-    let user: User = null;
-    const headers = new HttpHeaders()
-          .set('Authorization', 'Access-Control-Allow-Origin');
+    //Retourne l'utilisateur ou null (si non connecté).
+    redirectIfConnected(onSuccess: Function): void {
+        let user: User = null;
+        const headers = new HttpHeaders()
+            .set('Authorization', 'Access-Control-Allow-Origin');
 
-    this._httpClient.get(ConnectionService.ApiUrl, {
-        headers: headers,
-        observe: 'response',
-        withCredentials: true
-      }).subscribe(
-        res => {
-          user =  res.body as User;          
-          onSuccess();
-        }
-      )
-  }
+        this._httpClient.get(ConnectionService.ApiUrl, {
+            headers: headers,
+            observe: 'response',
+            withCredentials: true
+        }).subscribe(
+            res => {
+                user = res.body as User;
+                onSuccess();
+            }
+        )
+    }
 
-  postObservable(user: User): Observable<any> {
-    const headers = new HttpHeaders()
-      .set('Authorization', 'Access-Control-Allow-Origin')
-      .set('Content-Type', 'application/json');
+    postData(user: User): Observable<any> {
+        const headers = new HttpHeaders()
+            .set('Authorization', 'Access-Control-Allow-Origin')
+            .set('Content-Type', 'application/json');
 
-    return this._httpClient.post(ConnectionService.ApiUrl, JSON.stringify(user), {
-      headers: headers,
-      observe: 'response',
-      withCredentials: true //Permet d'envoyer le cookie de session.
-    });
-  }
-
-  postData(user: User): Array<string> {
-    let errors = new Array<string>();
-
-    this.postObservable(user).subscribe(           //Listener sur la réponse envoyé par le serveur.
-        res => {
-          this._router.navigate([ConnectionService.UrlOnConnectionSuccess]);
-        },
-        (err: HttpErrorResponse) => {
-          if (err.status == 401) {
-            errors.push("Connexion échouée, nom d'utilisateur ou mot de passe invalide.");
-          }
-          else {
-            errors.push("Code d'erreur : " + err.status + ".\nUne erreur est survenue, merci de réessayer plus tard.");
-          }
-        }
-      );
-
-      return errors;
-  }
+        return this._httpClient.post(ConnectionService.ApiUrl, JSON.stringify(user), {
+            headers: headers,
+            observe: 'response',
+            withCredentials: true //Permet d'envoyer le cookie de session.
+        });
+    }
 }
