@@ -1,10 +1,15 @@
 import { Materiel } from "../materiel.model";
 
 export class Cellule  extends Materiel {
-    executerOrdre(): void {
-        throw new Error("Method not implemented.");
+    constructor(nom?: string, etat?: string) {
+        super(nom, etat, "Cellule");
     }
+
+    executerOrdre(): void {
+        alert("Cellule");
+    }
+
     getActionLabel(): string {
-        throw new Error("Method not implemented.");
+        return "Cellule";
     }
 }

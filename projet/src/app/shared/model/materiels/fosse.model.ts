@@ -1,10 +1,14 @@
 import { Materiel } from "../materiel.model";
 
 export class Fosse extends Materiel {
+    constructor(nom?: string, etat?: string) {
+        super(nom, etat, "TourManutention");
+    }
+
     executerOrdre(): void {
-        throw new Error("Method not implemented.");
+        alert("Fosse");
     }
     getActionLabel(): string {
-        throw new Error("Method not implemented.");
+        return "Vider";
     }
 }

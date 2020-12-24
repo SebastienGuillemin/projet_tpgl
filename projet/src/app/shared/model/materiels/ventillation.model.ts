@@ -1,10 +1,14 @@
 import { Materiel } from "../materiel.model";
 
 export class Ventillation extends Materiel {
+    constructor(nom?: string, etat?: string) {
+        super(nom, etat, "Ventillation");
+    }
+
     executerOrdre(): void {
-        throw new Error("Method not implemented.");
+        alert("Venillation");
     }
     getActionLabel(): string {
-        throw new Error("Method not implemented.");
+        return "Actionner";
     }
 }

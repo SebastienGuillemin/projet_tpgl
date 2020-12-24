@@ -1,10 +1,14 @@
 import { Materiel } from "../materiel.model";
 
 export class Sonde extends Materiel {
+    constructor(nom?: string, etat?: string) {
+        super(nom, etat, "Sonde");
+    }
+
     executerOrdre(): void {
-        throw new Error("Method not implemented.");
+        alert("Sonde");
     }
     getActionLabel(): string {
-        throw new Error("Method not implemented.");
+        return "Sonder";
     }
 }

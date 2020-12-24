@@ -1,10 +1,14 @@
 import { Materiel } from "../materiel.model";
 
 export class ElevateurGodet extends Materiel {
+    constructor(nom?: string, etat?: string) {
+        super(nom, etat, "ElevateurGodet");
+    }
+
     executerOrdre(): void {
-        throw new Error("Method not implemented.");
+        alert("Élévateur");
     }
     getActionLabel(): string {
-        throw new Error("Method not implemented.");
+        return "Élévateur";
     }
 }

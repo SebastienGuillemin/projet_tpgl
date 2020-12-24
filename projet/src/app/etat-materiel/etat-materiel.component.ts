@@ -1,15 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Materiel } from '../shared/model/materiel.model';
-import { Alarme } from '../shared/model/materiels/alarme.model';
-import { Boisseau } from '../shared/model/materiels/boisseau.model';
-import { Cellule } from '../shared/model/materiels/cellule.model';
-import { ElevateurGodet } from '../shared/model/materiels/elevateur-godet.model';
-import { Fosse } from '../shared/model/materiels/fosse.model';
-import { PontBascule } from '../shared/model/materiels/pont-bascule.model';
-import { Silo } from '../shared/model/materiels/silo.model';
-import { Sonde } from '../shared/model/materiels/sonde.model';
-import { TourManutention } from '../shared/model/materiels/tour-manutention.model';
-import { Ventillation } from '../shared/model/materiels/ventillation.model';
+import { MaterielFactoryService } from '../shared/services/materiel-factory.service';
 import { MaterielService } from '../shared/services/materiel.service';
 
 @Component({
@@ -21,7 +12,7 @@ export class EtatMaterielComponent implements OnInit {
 
   public materiels: Materiel[];
 
-  constructor(private _materielService: MaterielService) {
+  constructor(private _materielService: MaterielService, private _materielFactory: MaterielFactoryService) {
     this.materiels = [];
   }
 
@@ -36,8 +27,7 @@ export class EtatMaterielComponent implements OnInit {
       .subscribe(
         res => {
           for (let i = 0; i < res.body.length; i++) {    //on parcourt la liste des objets retournées par le serveur et on les utilise pour créer un nouveau lot de céréales.
-            // this.materiels.push(Object.assign(eval("new " + res.body[i].type + "()"), res.body[i]));
-            console.log(eval("new " + res.body[i].type + "()"));
+            this.materiels.push(this._materielFactory.createMateriel(res.body[i].type, res.body[i].nom, res.body[i].etat));
           }
         }
       );
