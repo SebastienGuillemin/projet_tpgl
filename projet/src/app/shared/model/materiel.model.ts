@@ -1,6 +1,8 @@
+import { exception } from 'console';
 import { ModelFormInterface } from './modelFormInterface';
 
-export abstract class Materiel implements ModelFormInterface {
+//Il faudrait que cette classe soit abstraite. Seulement, si ell eest abstraite, onne peut plus générer le formulaire dynamiquement ...
+export class Materiel implements ModelFormInterface {
     constructor (               
         public nom?: string, 
         public etat?: string,
@@ -14,10 +16,14 @@ export abstract class Materiel implements ModelFormInterface {
     }
 
     //Execute une action. Comme chaque matériel fait une action différente, il faut que cette méthode soit implémenter par les classe filles.
-    abstract executerOrdre(): void;
-
+    executerOrdre(): void {
+        throw new Error("Impossible d'éxécuter un ordre pour un matériel générique.");
+    }
+    
     //Retourne le label à mettre sur le bouton de l'action.
-    abstract getActionLabel(): string;
+    getActionLabel(): string{
+        throw new Error("Label indisponible pour un matériel générique.");
+    }
     
     getFormFields(): string[] {
         return ["nom", "etat"];

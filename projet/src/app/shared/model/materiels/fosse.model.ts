@@ -8,6 +8,7 @@ export class Fosse extends Materiel {
     executerOrdre(): void {
         alert("Fosse");
     }
+    
     getActionLabel(): string {
         return "Vider";
     }

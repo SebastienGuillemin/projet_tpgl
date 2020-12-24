@@ -1,18 +1,7 @@
-<!--
-<div>
-      <div class="materiel" *ngFor="let machine of materiels;">
-        <img src="https://cdn.tutsplus.com/vector/uploads/2014/03/gem-PW-diamond.jpg"  class="picture-left">
-        <h3> Description : </h3>
-        <h2> Nom Machine : {{ machine.nom }} </h2>
-        <h2> Etat : {{ machine.etat }} </h2>
-      </div>
-  </section>
-</div>
-
-
--->
-  <div  *ngFor="let materiel of materiels">
-      <h2>Nom du matériel : {{ materiel.nom }}</h2>
-      <p>Etat : {{ materiel.etat }}</p>
-
+<div class="materiels-cards-container">
+  <div class="materiel-card" *ngFor="let materiel of materiels">
+    <h2 class="materiel-nom">{{ materiel.nom }}</h2>
+    <p class="materiel-etat">Etat : {{ materiel.etat }}</p>
+    <button class="btn btn-primary">{{ materiel.getActionLabel() }}</button>
   </div>
+</div>
