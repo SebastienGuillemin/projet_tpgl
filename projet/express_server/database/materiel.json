@@ -1,90 +1,112 @@
 [
     {
         "nom": "Silo",
-        "etat": "Bon"
+        "etat": "Bon",
+        "type" : "Silo"
     },
     {
         "nom": "Cellule1",
-        "etat": "Bon"
+        "etat": "Bon",
+        "type" : "Cellule"
     },
     {
         "nom": "Cellule2",
-        "etat": "Bon"
+        "etat": "Bon",
+        "type" : "Cellule"
     },
     {
         "nom": "Cellule3",
-        "etat": "Bon"
+        "etat": "Bon",
+        "type" : "Cellule"
     },
     {
         "nom": "Cellule4",
-        "etat": "Bon"
+        "etat": "Bon",
+        "type" : "Cellule"
     },
     {
         "nom": "Cellule5",
-        "etat": "Bon"
+        "etat": "Bon",
+        "type" : "Cellule"
     },
     {
         "nom": "Cellule6",
-        "etat": "Bon"
+        "etat": "Bon",
+        "type" : "Cellule"
     },
     {
         "nom": "Cellule7",
-        "etat": "Bon"
+        "etat": "Bon",
+        "type" : "Cellule"
     },
     {
         "nom": "Cellule8",
-        "etat": "Bon"
+        "etat": "Bon",
+        "type" : "Cellule"
     },
     {
         "nom": "Cellule9",
-        "etat": "Bon"
+        "etat": "Bon",
+        "type" : "Cellule"
     },
     {
         "nom": "Cellule10",
-        "etat": "Bon"
+        "etat": "Bon",
+        "type" : "Cellule"
     },
     {
         "nom": "Tour de manutention",
-        "etat": "Moyen"
+        "etat": "Moyen",
+        "type" : "TourManutention"
     },
     {
         "nom": "Boisseau1",
-        "etat": "Bon"
+        "etat": "Bon",
+        "type" : "Boisseau"
     },
     {
         "nom": "Boisseau2",
-        "etat": "Bon"
+        "etat": "Bon",
+        "type" : "Boisseau"
     },
     {
         "nom": "Boisseau3",
-        "etat": "Bon"
+        "etat": "Bon",
+        "type" : "Boisseau"
     },
     {
         "nom": "Fosse1",
-        "etat": "Bon"
+        "etat": "Bon",
+        "type" : "Fosse"
     },
     {
         "nom": "Fosse2",
-        "etat": "Bon"
+        "etat": "Bon",
+        "type" : "Fosse"
     },
     {
         "nom": "Systeme ventilation",
-        "etat": "Moyen"
+        "etat": "Moyen",
+        "type" : "Ventillation"
     },
     {
         "nom": "Alarme",
-        "etat": "Bon"
+        "etat": "Bon",
+        "type" : "Alarme"
     },
     {
-        "nom": "ElevateurGodet",
-        "etat": "Mauvais"
+        "nom": "Elevateur Godet",
+        "etat": "Mauvais",
+        "type" : "ElevateurGodet"
     },
     {
-        "nom": "Pont Bascule",
-        "etat": "Bon"
+        "nom": "Pont à Bascule",
+        "etat": "Bon",
+        "type" : "PontBascule"
     },
     {
         "nom": "Sonde",
-        "etat": "ok"
+        "etat": "ok",
+        "type" : "Sonde"
     }
 ]
