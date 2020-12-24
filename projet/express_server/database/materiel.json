@@ -1,10 +1,78 @@
 [
     {
-        "nom": "Alarme",
+        "nom": "Silo",
         "etat": "Bon"
     },
     {
-        "nom": "Boisseau",
+        "nom": "Cellule1",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Cellule2",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Cellule3",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Cellule4",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Cellule5",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Cellule6",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Cellule7",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Cellule8",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Cellule9",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Cellule10",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Tour de manutention",
+        "etat": "Moyen"
+    },
+    {
+        "nom": "Boisseau1",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Boisseau2",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Boisseau3",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Fosse1",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Fosse2",
+        "etat": "Bon"
+    },
+    {
+        "nom": "Systeme ventilation",
+        "etat": "Moyen"
+    },
+    {
+        "nom": "Alarme",
         "etat": "Bon"
     },
     {
@@ -12,27 +80,11 @@
         "etat": "Mauvais"
     },
     {
-        "nom": "Fosse",
-        "etat": "Bon"
-    },
-    {
         "nom": "Pont Bascule",
-        "etat": "Bon"
-    },
-    {
-        "nom": "Silo",
         "etat": "Bon"
     },
     {
         "nom": "Sonde",
         "etat": "ok"
-    },
-    {
-        "nom": "Systeme ventilation",
-        "etat": "Moyen"
-    },
-    {
-        "nom": "Tour de manutention",
-        "etat": "Moyen"
     }
 ]
