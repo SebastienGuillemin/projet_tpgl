@@ -8,16 +8,23 @@ export class UserConnectionService {
     connection(req: express.Request, res: express.Response): void {
         let user = req.body as User;
         let managerDB = new ManagerDB();
-        let role = managerDB.getUserRole(user); //Récupération du rôle.
+        // let role = managerDB.getUserRole(user); //Récupération du rôle.
+        let user_db = managerDB.getUser(user);
 
-        if (role == undefined) {        //Si le rôle est "undifned" => utilisateur non connecté.
-            res.status(401).send();     //Envoi du status 401.
+        if (user_db?.role === undefined){
+          res.status(401).send();
         }
-        else {
-            user["role"] = role;
+        else{
+          if (user['password'] === user_db.password){
+            //user["role"] = role;
             req.session["user"] = user;
-            res.status(200).send();     //Envoi du status 200.
+            res.status(200).send();
+          }
+          else{
+            res.status(401).send();
+          }
         }
+
     }
 
     //Retourne l'utilisateur s'il est connecté, sinon retourne 401.
