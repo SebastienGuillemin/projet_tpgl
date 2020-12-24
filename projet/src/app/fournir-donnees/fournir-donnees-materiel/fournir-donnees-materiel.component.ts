@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormService } from 'src/app/shared/services/form.service';
+import { MaterielService } from 'src/app/shared/services/materiel.service';
 import { FormGroup } from '@angular/forms';
 import { Materiel } from 'src/app/shared/model/materiel.model';
 
@@ -10,24 +11,25 @@ import { Materiel } from 'src/app/shared/model/materiel.model';
 })
 export class FournirDonneesMaterielComponent implements OnInit {
   private _materiel: Materiel;
-  
+  errors: String [];
+
 
 
   form: FormGroup;
 
   noms = [
-    "Alarme",
-    "Boisseau",
-    "ElevateurGodet",
-    "Fosse",
-    "Pont Bascule",
-    "Silo",
-    "Sonde",
-    "Systeme ventilation",
-    "Tour de manutention" 
+    'Alarme',
+    'Boisseau',
+    'ElevateurGodet',
+    'Fosse',
+    'Pont Bascule',
+    'Silo',
+    'Sonde',
+    'Systeme ventilation',
+    'Tour de manutention'
   ];
 
-  constructor(private _formService: FormService) { }
+  constructor(private _formService: FormService, private _materielService: MaterielService) { }
 
   ngOnInit(): void {
     this._materiel = new Materiel();
@@ -38,6 +40,13 @@ export class FournirDonneesMaterielComponent implements OnInit {
   onSubmit(): void {
     this._formService.hydrate();
     this._materiel = this._formService.getModel() as Materiel;
-    this.ngOnInit(); 
+    let errors = this._materielService.updateData(this._materiel);
+    if (errors.length > 0){
+      this.errors = errors;
+    }
+    else{
+      this.ngOnInit();
+    }
+
   }
 }

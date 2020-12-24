@@ -1,6 +1,6 @@
 import * as express from 'express';
 import { User } from 'src/app/shared/model/user.model';
-import { ManagerDB } from '../ManagerDB';
+import { ManagerDB } from '../ManagerDb';
 
 export class UserConnectionService {
     //Regarde dans la BD si l'utilisateur à fournit le bon couple '"username"/"password".
