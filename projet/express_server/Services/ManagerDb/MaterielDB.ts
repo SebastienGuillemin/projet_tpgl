@@ -3,15 +3,12 @@ import { Materiel } from 'src/app/shared/model/materiel.model';
 import fs = require('fs');
 
 export class MaterielDB {
-    // tslint:disable-next-line:variable-name
     public materiel_file_path = 'express_server/database/materiel.json';
 
     getMateriels(): Materiel[] {
         const materiels: Array<Materiel> = JSON.parse(fs.readFileSync(this.materiel_file_path, 'utf8'));
         return materiels;
     }
-
-
 
     updateMateriels(req: Request, res: Response) {
         const data = req.body;
@@ -25,8 +22,8 @@ export class MaterielDB {
             JSON.stringify(materiels, null, 4),
             function (err) {
                 if (err) {
-                    console.log('Erreur mise à jour Materiel', err);
                     res.status(500).send();
+                    console.log('Erreur mise à jour Materiel', err);
                 }
                 else {
                     console.log('ok');

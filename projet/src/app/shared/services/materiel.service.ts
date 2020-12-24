@@ -33,26 +33,16 @@ export class MaterielService {
     }
 
 
-    updateData(materiel: Materiel): string[] {
-        let errors = new Array<string>();
+    updateData(materiel: Materiel): Observable<any> {
         const headers = new HttpHeaders()
             .set('Authorization', 'Access-Control-Allow-Origin')
             .set('Content-Type', 'application/json');
 
-        this._httpClient.post(MaterielService.UpdateApiUrl, JSON.stringify(materiel), {
+        return this._httpClient.post(MaterielService.UpdateApiUrl, JSON.stringify(materiel), {
             headers: headers,
             observe: 'response',
             withCredentials: true // Permet d'envoyer le cookie de session.
-        }).subscribe(           // Listener sur la réponse envoyé par le serveur.
-            res => {
-                //this._router.navigate([MaterielService.etatMaterialUrl]); //Vraiment util ? Si on veut mettre à jour plusieurs matériels c'est chiant
-            },
-            (err: HttpErrorResponse) => {
-                errors.push('Code d\'erreur : ' + err.status + '.\nUne erreur est survenue, merci de réessayer plus tard.');
-            }
-        );
-
-        return errors;
+        });
     }
 
 }

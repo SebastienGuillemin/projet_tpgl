@@ -3,6 +3,7 @@ import { FormService } from 'src/app/shared/services/form.service';
 import { MaterielService } from 'src/app/shared/services/materiel.service';
 import { FormGroup } from '@angular/forms';
 import { Materiel } from 'src/app/shared/model/materiel.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     selector: 'app-fournir-donnees-materiel',
@@ -30,6 +31,7 @@ export class FournirDonneesMaterielComponent implements OnInit {
 
     constructor(private _materielService: MaterielService) {
         this._formService = new FormService();
+        this.errors = [];
     }
 
     ngOnInit(): void {
@@ -41,13 +43,14 @@ export class FournirDonneesMaterielComponent implements OnInit {
     onSubmit(): void {
         this._formService.hydrate();
         this._materiel = this._formService.getModel() as Materiel;
-        let errors = this._materielService.updateData(this._materiel);
-        if (errors.length > 0) {
-            this.errors = errors;
-        }
-        else {
-            this.ngOnInit();
-        }
-
+        this._materielService.updateData(this._materiel).subscribe(           // Listener sur la réponse envoyé par le serveur.
+            res => {
+                //this._router.navigate([MaterielService.etatMaterialUrl]); //Vraiment util ? Si on veut mettre à jour plusieurs matériels c'est chiant
+            },
+            (err: HttpErrorResponse) => {
+                this.errors.push('Code d\'erreur : ' + err.status + '.\nUne erreur est survenue, merci de réessayer plus tard.');
+            }
+        );
+        this.ngOnInit();
     }
 }
