@@ -5,8 +5,8 @@ export class Silo extends Materiel {
         super(nom, etat, "Silo");
     }
 
-    executerOrdre(): void {
-        alert("Silo vidé");
+    action(): void {
+        this.etat = "Vide";
     }
 
     getActionLabel(): string {

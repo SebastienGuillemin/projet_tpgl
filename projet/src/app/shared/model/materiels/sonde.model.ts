@@ -5,7 +5,7 @@ export class Sonde extends Materiel {
         super(nom, etat, "Sonde");
     }
 
-    executerOrdre(): void {
+    action(): void {
         alert("Sonde");
     }
     getActionLabel(): string {

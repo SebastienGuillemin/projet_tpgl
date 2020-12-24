@@ -5,7 +5,7 @@ export class Fosse extends Materiel {
         super(nom, etat, "TourManutention");
     }
 
-    executerOrdre(): void {
+    action(): void {
         alert("Fosse");
     }
     

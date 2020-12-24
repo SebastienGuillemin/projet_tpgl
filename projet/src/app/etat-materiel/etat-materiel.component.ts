@@ -32,4 +32,9 @@ export class EtatMaterielComponent implements OnInit {
         }
       );
   }
+
+  actionMateriel(index): void {
+    this.materiels[index].action();
+    this._materielService.updateData(this.materiels[index]);
+  }
 }

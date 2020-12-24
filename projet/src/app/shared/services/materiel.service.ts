@@ -8,8 +8,7 @@ import { Materiel } from '../model/materiel.model';
     providedIn: 'root'
 })
 
-
-// Permet de récupérer les données sur les céréales stockées dans la bd et d'envoyer de nouvelles données.
+// Permet de récupérer les données sur les matériels stockées dans la bd et d'envoyer de nouvelles données.
 export class MaterielService {
     public static GetApiUrl = 'api/getMateriels';
     public static UpdateApiUrl = 'api/updateMateriels';

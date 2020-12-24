@@ -5,7 +5,7 @@ export class PontBascule extends Materiel {
         super(nom, etat, "TourManutention");
     }
 
-    executerOrdre(): void {
+    action(): void {
         alert("Pont");
     }
     getActionLabel(): string {

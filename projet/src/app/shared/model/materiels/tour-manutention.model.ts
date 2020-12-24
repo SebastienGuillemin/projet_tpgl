@@ -5,7 +5,7 @@ export class TourManutention extends Materiel {
         super(nom, etat, "TourManutention");
     }
 
-    executerOrdre(): void {
+    action(): void {
         alert("Tour");
     }
     getActionLabel(): string {

@@ -5,7 +5,7 @@ export class ElevateurGodet extends Materiel {
         super(nom, etat, "ElevateurGodet");
     }
 
-    executerOrdre(): void {
+    action(): void {
         alert("Élévateur");
     }
     getActionLabel(): string {

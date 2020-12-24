@@ -5,11 +5,15 @@ export class Boisseau  extends Materiel {
         super(nom, etat, "Boisseau");
     }
 
-    executerOrdre(): void {
-        alert("Boisseau");
+    action(): void {
+        if (this.etat == "Plein")
+            this.etat = "Vide";
+        else this.etat = "Plein";
     }
 
     getActionLabel(): string {
-        return "Boisseau";
+        if (this.etat == "Plein")
+            return "Vider";
+        else return "Remplir";
     }
 }

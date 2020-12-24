@@ -5,7 +5,7 @@ export class Cellule  extends Materiel {
         super(nom, etat, "Cellule");
     }
 
-    executerOrdre(): void {
+    action(): void {
         alert("Cellule");
     }
 

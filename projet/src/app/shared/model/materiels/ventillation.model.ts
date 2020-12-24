@@ -5,7 +5,7 @@ export class Ventillation extends Materiel {
         super(nom, etat, "Ventillation");
     }
 
-    executerOrdre(): void {
+    action(): void {
         alert("Venillation");
     }
     getActionLabel(): string {

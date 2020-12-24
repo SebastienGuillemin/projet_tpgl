@@ -1,7 +1,9 @@
+import { MaterielService } from '../services/materiel.service';
 import { ModelFormInterface } from './modelFormInterface';
 
 //Il faudrait que cette classe soit abstraite. Seulement, si ell eest abstraite, onne peut plus générer le formulaire dynamiquement ...
 export class Materiel implements ModelFormInterface {
+
     constructor (               
         public nom?: string, 
         public etat?: string,
@@ -15,7 +17,7 @@ export class Materiel implements ModelFormInterface {
     }
 
     //Execute une action. Comme chaque matériel fait une action différente, il faut que cette méthode soit implémenter par les classe filles.
-    executerOrdre(): void {
+    action(): void {
         throw new Error("Impossible d'éxécuter un ordre pour un matériel générique.");
     }
     

@@ -1,7 +1,7 @@
 <div class="materiels-cards-container">
-  <div class="materiel-card" *ngFor="let materiel of materiels">
+  <div class="materiel-card" *ngFor="let materiel of materiels; let i = index">
     <h2 class="materiel-nom">{{ materiel.nom }}</h2>
     <p class="materiel-etat">Etat : {{ materiel.etat }}</p>
-    <button class="btn btn-primary">{{ materiel.getActionLabel() }}</button>
+    <button class="btn btn-primary" (click)="actionMateriel(i)">{{ materiel.getActionLabel() }}</button>
   </div>
 </div>
