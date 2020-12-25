@@ -1,7 +1,7 @@
 [
     {
         "nom": "Silo",
-        "etat": "dqzdqd",
+        "etat": "Plein",
         "type": "Silo"
     },
     {
@@ -51,7 +51,7 @@
     },
     {
         "nom": "Cellule10",
-        "etat": "Vide",
+        "etat": "Pleine",
         "type": "Cellule"
     },
     {
@@ -76,12 +76,12 @@
     },
     {
         "nom": "Fosse1",
-        "etat": "Vide",
+        "etat": "Pleine",
         "type": "Fosse"
     },
     {
         "nom": "Fosse2",
-        "etat": "Vide",
+        "etat": "Pleine",
         "type": "Fosse"
     },
     {
@@ -101,12 +101,12 @@
     },
     {
         "nom": "Pont à Bascule",
-        "etat": "Bon",
+        "etat": "Baissé",
         "type": "PontBascule"
     },
     {
         "nom": "Sonde",
-        "etat": "Éteinte",
+        "etat": "Allumée",
         "type": "Sonde"
     }
 ]

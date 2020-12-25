@@ -2,6 +2,7 @@
   <div class="materiel-card" *ngFor="let materiel of materiels; let i = index">
     <h2 class="materiel-nom">{{ materiel.nom }}</h2>
     <p class="materiel-etat">Etat : {{ materiel.etat }}</p>
-    <button class="btn btn-primary" (click)="actionMateriel(i)">{{ materiel.getActionLabel() }}</button>
+    <img class="materiel-img" src="../../assets/img/materiels/{{ materiel.type }}.jpg" alt="{{ materiel.type }}">
+    <button class="btn btn-primary materiel-button" (click)="actionMateriel(i)">{{ materiel.getActionLabel() }}</button>
   </div>
 </div>

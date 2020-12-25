@@ -5,6 +5,6 @@ export class Fosse extends Materiel {
     labels = ["Vider", "Remplir"];
 
     constructor(nom?: string, etat?: string) {
-        super(nom, etat, "TourManutention");
+        super(nom, etat, "Fosse");
     }
 }

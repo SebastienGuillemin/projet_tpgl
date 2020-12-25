@@ -12,3 +12,13 @@
 .materiel-nom {
     color: rgb(0, 183, 255);
 }
+
+.materiel-img {
+    max-width: 150px;
+    max-height: 150px;
+    display: inline-block;
+}
+
+.materiel-button {
+    float: right;
+}

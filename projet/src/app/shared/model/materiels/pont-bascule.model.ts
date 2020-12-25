@@ -5,13 +5,6 @@ export class PontBascule extends Materiel {
     labels = ["Baisser", "Lever"];
 
     constructor(nom?: string, etat?: string) {
-        super(nom, etat, "TourManutention");
-    }
-
-    action(): void {
-        alert("Pont");
-    }
-    getActionLabel(): string {
-        return "Pont";
+        super(nom, etat, "PontBascule");
     }
 }
