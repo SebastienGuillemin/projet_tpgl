@@ -31,4 +31,8 @@ describe('CerealesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Retourner le titre', () => {
+    expect(component.getTitle()).toEqual("Voir les lots de céréales");
+  });
 });

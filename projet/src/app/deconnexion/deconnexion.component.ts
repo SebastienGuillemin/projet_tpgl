@@ -12,4 +12,7 @@ export class DeconnexionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getTitle(): string {
+    return "Déconnexion";
+  }
 }

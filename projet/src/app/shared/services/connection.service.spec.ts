@@ -2,6 +2,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { routes } from 'src/app/app-routing.module';
+import { User } from '../model/user.model';
 import { ConnectionService } from './connection.service';
 
 describe('ConnectionService', () => {
@@ -24,17 +25,27 @@ describe('ConnectionService', () => {
   });
 
   it('doit recevoir les données de connection avec la backend', () => {
+    //Données de la fausse réponse.
     const mockConnection = {
       "username": "admin",
       "password": "admin",
       "role": "admin"
     }
 
+    //Envoie de la requête par le service (test de la méthode).
+    service.postData(new User("admin", "admin")).subscribe(
+      //On peut se passer des lignes suivantes car on est sûr que les données reçues seront égales au données envoyées.
+      res => {
+        expect(res.body).toEqual(mockConnection); //Vérification de la réponse.
+      }
+    );
+
+    //Vérification qu'une requête a bien été envoyé à l'adresse "api/connection".
     const req = httpTestingController.expectOne(ConnectionService.ApiUrl);
-
-    expect(req.request.method).toEqual('POST');
-
-    req.flush(mockConnection);
+    
+    //Véfication que la requête est de type post.
+    expect(req.request.method).toEqual('POST');  
+    req.flush(mockConnection);  //Envoie des données dans la fausse réponse.
   });
 
   afterEach(() => {

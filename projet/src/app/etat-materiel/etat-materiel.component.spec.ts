@@ -22,4 +22,8 @@ describe('EtatMaterielComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Retourner le titre', () => {
+    expect(component.getTitle()).toEqual("Voir état du matériel");
+  });
 });
