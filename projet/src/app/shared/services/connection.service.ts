@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../model/user.model';
+import { User, UserRole } from '../model/user.model';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -27,6 +27,28 @@ export class ConnectionService {
             res => {
                 user = res.body as User;
                 onSuccess();
+            }
+        )
+    }
+
+    redirectIfNotAuthorized(requiredAccess : UserRole, onNotAuthorized: Function): void {
+        let user: User = null;
+        const headers = new HttpHeaders()
+            .set('Authorization', 'Access-Control-Allow-Origin');
+
+        this._httpClient.get(ConnectionService.ApiUrl, {
+            headers: headers,
+            observe: 'response',
+            withCredentials: true
+        }).subscribe(
+            res => {
+                user = res.body as User;
+                if (requiredAccess != user.role) {
+                    onNotAuthorized();
+                }
+            },
+            (err: HttpErrorResponse) => {
+                onNotAuthorized();
             }
         )
     }
