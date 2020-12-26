@@ -31,11 +31,6 @@ describe('ConnectionService', () => {
       "role": "admin"
     }
 
-    service.postObservable(mockConnection as User).subscribe(
-      res => {
-        expect(res.body).toEqual(mockConnection)
-    });
-
     const req = httpTestingController.expectOne(ConnectionService.ApiUrl);
 
     expect(req.request.method).toEqual('POST');
