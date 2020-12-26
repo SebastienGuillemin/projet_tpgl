@@ -14,7 +14,7 @@ export class UserConnectionService {
             res.status(401).send();
         }
         else if (user['password'] === user_db.password) {
-            req.session["user"] = user;
+            req.session["user"] = user_db;
             res.status(200).send();
         }
         else {
