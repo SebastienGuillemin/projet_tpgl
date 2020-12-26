@@ -1,17 +1,3 @@
-- finir gestion des céréales :
-	|- mettre à jour le fichier Json via NodeJS.
-	|- possibilité de rentrer les données par l'admin.
+Écrire les tests.
 
-- écrire les tests :
-	|- écrire les tests pour toutes les fonctions déjà implémentées côté Angular.
-	|- faire la même chose côté NodeJS ?
-	|- mettre en place des tests d'intégration (Quentin s'en occupe).
-
-- gestion du matériel :
-	|- création des fichiers Json pour la BD (un fihcier pour représenter un matériel et un fichier pour spécifier le type du matériel).
-	|- permettre de lire le fichier Json de la base de données côté NodeJS.
-	|- afficher ces données (création d'un model pour le matériel ...) avec Angular.
-	|- permettre la mise à jour des données pour l'admin.
-
-/!\ Dès qu'un composant, service ... est terminé penser à écrire les tests liés à ce composant avant de passer à la suite.
-les test peuvent etre lancé avec : npm test 
+Les test peuvent etre lancé avec : npm test 
