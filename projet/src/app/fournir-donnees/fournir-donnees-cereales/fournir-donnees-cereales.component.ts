@@ -27,12 +27,20 @@ export class FournirDonneesCerealesComponent implements OnInit {
 
     constructor(private _cerealesService: CerealesService) {
         this._formService = new FormService();
+        this.errors = [];
+    }
+
+    getCereale(): Cereale {
+        return this._cereale;
+    }
+
+    setCereale(cereale: Cereale): void {
+        this._cereale = cereale;
     }
 
     ngOnInit(): void {
         //Les deux lignes suivantes se trouvent dans ngOnInit afin de pouvoir recharger le formulaire.
         this._cereale = new Cereale();                //création d'un nouveau lot de céréale vide.
-        this.errors = [];   
         this._formService.setModel(this._cereale);    //passage de ce lot au service de formulaire.
         this.form = this._formService.getForm();     //récupération du formulaire.
     }
