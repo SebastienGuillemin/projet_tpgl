@@ -27,6 +27,9 @@ export class ConnectionService {
             res => {
                 user = res.body as User;
                 onSuccess();
+            },
+            (err: HttpErrorResponse) => {
+                //Utilisateur non connecté, ne rien faire.
             }
         )
     }
