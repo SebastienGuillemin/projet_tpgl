@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
         if (res.status == 200) this.userConnected = true;
       },
       (err: HttpErrorResponse) => {
-        if(err.status == 400) this.userConnected = false;
+        if(err.status == 401) this.userConnected = false;
       }
     );
   }
