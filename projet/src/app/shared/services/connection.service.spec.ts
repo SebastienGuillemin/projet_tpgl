@@ -2,15 +2,21 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { routes } from 'src/app/app-routing.module';
-import { User } from '../model/user.model';
+import { User, UserRole } from '../model/user.model';
 import { ConnectionService } from './connection.service';
 
 describe('ConnectionService', () => {
   //Données de la fausse réponse.
-  const mockConnection = {
+  const mockConnectionAdmin = {
     "username": "admin",
     "password": "admin",
     "role": "admin"
+  };
+
+  const mockConnectionUser = {
+    "username": "user",
+    "password": "user",
+    "role": "user"
   };
 
   let service: ConnectionService;
@@ -36,13 +42,11 @@ describe('ConnectionService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Test de l\'envoi de données', () => {
+  it('Doit de envoyer les données', () => {
     //Envoie de la requête par le service (test de la méthode).
     service.postData(new User("admin", "admin")).subscribe(
       //On peut se passer des lignes suivantes car on est sûr que les données reçues seront égales au données envoyées.
-      res => {
-        expect(res.body).toEqual(mockConnection); //Vérification de la réponse.
-      }
+      res => { }
     );
 
     //Vérification qu'une requête a bien été envoyé à l'adresse "api/connection".
@@ -50,15 +54,25 @@ describe('ConnectionService', () => {
 
     //Véfication que la requête est de type post.
     expect(req.request.method).toEqual('POST');
-    req.flush(mockConnection);  //Envoie des données dans la fausse réponse.
   });
 
-  it('Test de la récupération de l\'utilisateur', () => {
+  it('Doit récupérer de l\'utilisateur', () => {
     service.getUser().subscribe(
-      res => {}
+      res => { }
     );
 
     const req = httpTestingController.expectOne(ConnectionService.ApiUrl);
     expect(req.request.method).toEqual('GET');
+  });
+
+  it('Doit exécuter fonction si accès non autorisé', () => {
+    var valid;
+
+    service.redirectIfNotAuthorized(UserRole.Admin, function () { valid = true; })
+    const req = httpTestingController.expectOne(ConnectionService.ApiUrl);
+    expect(req.request.method).toEqual('GET');
+    req.flush(mockConnectionUser);
+
+    expect(valid).toEqual(true);
   });
 });
