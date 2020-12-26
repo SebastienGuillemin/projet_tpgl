@@ -64,4 +64,15 @@ export class ConnectionService {
             withCredentials: true //Permet d'envoyer le cookie de session.
         });
     }
+    
+    getUser(): Observable<any> {
+        const headers = new HttpHeaders()
+            .set('Authorization', 'Access-Control-Allow-Origin');
+
+        return this._httpClient.get(ConnectionService.ApiUrl, {
+            headers: headers,
+            observe: 'response',
+            withCredentials: true
+        });
+    }
 }

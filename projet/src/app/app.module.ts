@@ -12,6 +12,7 @@ import { FournirDonneesComponent } from './fournir-donnees/fournir-donnees.compo
 import { HttpClientModule } from '@angular/common/http';
 import { FournirDonneesCerealesComponent } from './fournir-donnees/fournir-donnees-cereales/fournir-donnees-cereales.component';
 import { FournirDonneesMaterielComponent } from './fournir-donnees/fournir-donnees-materiel/fournir-donnees-materiel.component';
+import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FournirDonneesMaterielComponent } from './fournir-donnees/fournir-donne
     CerealesComponent,
     FournirDonneesComponent,
     FournirDonneesCerealesComponent,
-    FournirDonneesMaterielComponent
+    FournirDonneesMaterielComponent,
+    DeconnexionComponent
   ],
   imports: [
     BrowserModule,
