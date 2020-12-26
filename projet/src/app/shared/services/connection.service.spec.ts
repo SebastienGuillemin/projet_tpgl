@@ -66,13 +66,40 @@ describe('ConnectionService', () => {
   });
 
   it('Doit exécuter fonction si accès non autorisé', () => {
-    var valid;
+    var valid = true;
 
-    service.redirectIfNotAuthorized(UserRole.Admin, function () { valid = true; })
-    const req = httpTestingController.expectOne(ConnectionService.ApiUrl);
-    expect(req.request.method).toEqual('GET');
-    req.flush(mockConnectionUser);
+    //On test le cas où l'utilisateur n'est pas autorisé :
+    //Appelle de la fonction et passage du callback. 
+    service.redirectIfNotAuthorized(UserRole.Admin, function () { valid = false; })
+    //Vérification de l'url.
+    const req1 = httpTestingController.expectOne(ConnectionService.ApiUrl);
+    //Vérificatio du type de la requête.
+    expect(req1.request.method).toEqual('GET');
+    //Envoie des fausses données.
+    req1.flush(mockConnectionUser);
 
+    //valid a changé car l'utilisateur n'a pas le bon rôle.
+    expect(valid).toEqual(false);
+
+
+    //Test du cas où l'utilisateur est autoriser :
+    valid = true;
+    service.redirectIfNotAuthorized(UserRole.Admin, function () { valid = false; })
+    const req2 = httpTestingController.expectOne(ConnectionService.ApiUrl);
+    expect(req2.request.method).toEqual('GET');
+    req2.flush(mockConnectionAdmin);
+
+    //valid n'a pas changé car l'utilisateur a le bon rôle.
     expect(valid).toEqual(true);
+
+    //Test du cas d'erreur :
+    valid = true;
+    service.redirectIfNotAuthorized(UserRole.Admin, function () { valid = false; })
+    const req3 = httpTestingController.expectOne(ConnectionService.ApiUrl);
+    expect(req3.request.method).toEqual('GET');
+    req3.flush("Erreur", { status: 500, statusText: "Erreur interne" });
+
+    expect(valid).toEqual(false);
+
   });
 });
