@@ -1,4 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { routes } from 'src/app/app-routing.module';
 
 import { FournirDonneesMaterielComponent } from './fournir-donnees-materiel.component';
 
@@ -8,7 +11,11 @@ describe('FournirDonneesMaterielComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FournirDonneesMaterielComponent ]
+      declarations: [ FournirDonneesMaterielComponent ],
+      imports: [
+        RouterTestingModule.withRoutes(routes),
+        HttpClientTestingModule,
+      ]
     })
     .compileComponents();
   });
