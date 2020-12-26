@@ -6,6 +6,13 @@ import { User } from '../model/user.model';
 import { ConnectionService } from './connection.service';
 
 describe('ConnectionService', () => {
+  //Données de la fausse réponse.
+  const mockConnection = {
+    "username": "admin",
+    "password": "admin",
+    "role": "admin"
+  };
+
   let service: ConnectionService;
   let httpTestingController: HttpTestingController;
 
@@ -24,14 +31,7 @@ describe('ConnectionService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('doit recevoir les données de connection avec la backend', () => {
-    //Données de la fausse réponse.
-    const mockConnection = {
-      "username": "admin",
-      "password": "admin",
-      "role": "admin"
-    }
-
+  it('Test de l\'envoi de données', () => {
     //Envoie de la requête par le service (test de la méthode).
     service.postData(new User("admin", "admin")).subscribe(
       //On peut se passer des lignes suivantes car on est sûr que les données reçues seront égales au données envoyées.
@@ -42,9 +42,9 @@ describe('ConnectionService', () => {
 
     //Vérification qu'une requête a bien été envoyé à l'adresse "api/connection".
     const req = httpTestingController.expectOne(ConnectionService.ApiUrl);
-    
+
     //Véfication que la requête est de type post.
-    expect(req.request.method).toEqual('POST');  
+    expect(req.request.method).toEqual('POST');
     req.flush(mockConnection);  //Envoie des données dans la fausse réponse.
   });
 
@@ -52,4 +52,6 @@ describe('ConnectionService', () => {
     // After every test, assert that there are no more pending requests.
     httpTestingController.verify();
   });
+
+  it()
 });
