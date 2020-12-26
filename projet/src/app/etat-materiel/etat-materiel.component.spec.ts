@@ -54,4 +54,22 @@ describe('EtatMaterielComponent', () => {
     }]);
     expect(component.materiels).toEqual([new Cellule("Cellule1", "Vide")]);
   });
+
+  it('Doit mettre à jour la BD', () => {
+    //Cas où il n'y a pas de matériel
+    expect(component.materiels[0]).toBeUndefined();
+
+    //Cas où il y a du matériel.
+    component.materiels = [new Cellule("Cellule1", "Vide")];
+    
+    //Cas où tout se passe bien.
+    component.actionMateriel(0);
+    let req = httpTestingController.expectOne(MaterielService.UpdateApiUrl);
+    req.flush("ok");
+    
+    //Cas où le serveur retourne une erreur.
+    component.actionMateriel(0);
+    let req2 = httpTestingController.expectOne(MaterielService.UpdateApiUrl);
+    req2.flush("Erreur", {status : 500, statusText : "Erreur interne"});
+  });
 });
