@@ -29,6 +29,7 @@ export class MaterielFactoryService {
       case "ElevateurGodet" : return new ElevateurGodet(nom, etat);
       case "PontBascule" : return new PontBascule(nom, etat);
       case "Sonde" : return new Sonde(nom, etat);
+      default : return null;
     }
   }
 }
