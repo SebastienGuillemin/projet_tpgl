@@ -1,19 +1,20 @@
 import { Request, Response } from 'express';
 import { Materiel } from 'src/app/shared/model/materiel.model';
 import fs = require('fs');
+import { JsonDbParser } from '../../Util/JsonDbParser';
 
 export class MaterielDB {
     public materiel_file_path = 'express_server/database/materiel.json';
 
     getMateriels(): Materiel[] {
-        const materiels: Array<Materiel> = JSON.parse(fs.readFileSync(this.materiel_file_path, 'utf8'));
+        const materiels: Array<Materiel> = JsonDbParser.read<Materiel>(this.materiel_file_path);
         return materiels;
     }
 
     updateMateriels(req: Request, res: Response) {
         const data = req.body;
         let nom = data['nom'];
-        const materiels = JSON.parse(fs.readFileSync(this.materiel_file_path, 'utf8'));
+        const materiels = this.getMateriels();
         const idx = materiels.findIndex(x => x.nom === nom);
         materiels[idx].etat = data['etat'];
         fs.writeFile(
