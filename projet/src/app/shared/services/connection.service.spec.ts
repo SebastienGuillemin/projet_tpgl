@@ -27,6 +27,11 @@ describe('ConnectionService', () => {
     httpTestingController = TestBed.inject(HttpTestingController);
   });
 
+  afterEach(() => {
+    // After every test, assert that there are no more pending requests.
+    httpTestingController.verify();
+  });
+
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
@@ -48,10 +53,12 @@ describe('ConnectionService', () => {
     req.flush(mockConnection);  //Envoie des données dans la fausse réponse.
   });
 
-  afterEach(() => {
-    // After every test, assert that there are no more pending requests.
-    httpTestingController.verify();
-  });
+  it('Test de la récupération de l\'utilisateur', () => {
+    service.getUser().subscribe(
+      res => {}
+    );
 
-  it()
+    const req = httpTestingController.expectOne(ConnectionService.ApiUrl);
+    expect(req.request.method).toEqual('GET');
+  });
 });
