@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ConnectionService {
     public static ApiUrl: string = "api/connection";
+    public static ApiUrlLogout: string = "api/deconnection";
     public static UrlOnConnectionSuccess = "/cereales";
 
     constructor(private _httpClient: HttpClient, private _router: Router) { }
@@ -31,7 +32,7 @@ export class ConnectionService {
             (err: HttpErrorResponse) => {
                 //Utilisateur non connecté, ne rien faire.
             }
-        )
+        );
     }
 
     redirectIfNotAuthorized(requiredAccess : UserRole, onNotAuthorized: Function): void {
@@ -53,7 +54,7 @@ export class ConnectionService {
             (err: HttpErrorResponse) => {
                 onNotAuthorized();
             }
-        )
+        );
     }
 
     postData(user: User): Observable<any> {
@@ -67,7 +68,7 @@ export class ConnectionService {
             withCredentials: true //Permet d'envoyer le cookie de session.
         });
     }
-    
+
     getUser(): Observable<any> {
         const headers = new HttpHeaders()
             .set('Authorization', 'Access-Control-Allow-Origin');
@@ -77,5 +78,19 @@ export class ConnectionService {
             observe: 'response',
             withCredentials: true
         });
+    }
+
+    logout(): Observable<any> {
+      const headers = new HttpHeaders()
+        .set('Authorization', 'Access-Control-Allow-Origin')
+        .set('Content-Type', 'application/json');
+
+
+      return this._httpClient.post(ConnectionService.ApiUrlLogout, null, {
+        headers: headers,
+        observe: 'response',
+        withCredentials: true //Permet d'envoyer le cookie de session.
+      });
+
     }
 }

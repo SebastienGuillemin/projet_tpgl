@@ -30,4 +30,11 @@ export class UserConnectionService {
         else
             res.status(200).send(JSON.stringify(req.session["user"]));
     }
+
+    logout(req: express.Request, res: express.Response): void {
+      req.session.destroy(function(err) {
+
+      });
+      res.status(200).send();
+    }
 }

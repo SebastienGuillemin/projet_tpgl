@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {FormService} from '../shared/services/form.service';
+import {ConnectionService} from '../shared/services/connection.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-deconnexion',
@@ -7,12 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeconnexionComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
+
+  constructor(private _connectionService: ConnectionService) { }
+
+   ngOnInit(): void {
+     this._connectionService.logout().subscribe(
+      res => {
+
+      }
+    );
   }
 
   getTitle(): string {
-    return "Déconnexion";
+    return 'Déconnexion';
   }
 }

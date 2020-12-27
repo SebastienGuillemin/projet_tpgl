@@ -35,19 +35,19 @@ export class ConnectionComponent implements OnInit {
     }
 
     onSubmit(): void {
-        this.errors = []
+        this.errors = [];
         this._formService.hydrate();
         this._user = this._formService.getModel();
-        this._connectionService.postData(this._user).subscribe(           //Listener sur la réponse envoyé par le serveur.
+        this._connectionService.postData(this._user).subscribe(           // Listener sur la réponse envoyé par le serveur.
             res => {
                 this._router.navigate([ConnectionService.UrlOnConnectionSuccess]);
             },
             (err: HttpErrorResponse) => {
                 if (err.status == 401) {
-                    this.errors.push("Connexion échouée, nom d'utilisateur ou mot de passe invalide.");
+                    this.errors.push('Connexion échouée, nom d\'utilisateur ou mot de passe invalide.');
                 }
                 else {
-                    this.errors.push("Code d'erreur : " + err.status + ".\nUne erreur est survenue, merci de réessayer plus tard.");
+                    this.errors.push('Code d\'erreur : ' + err.status + '.\nUne erreur est survenue, merci de réessayer plus tard.');
                 }
             }
         );
@@ -55,16 +55,16 @@ export class ConnectionComponent implements OnInit {
 
     togglePassword(): void {
         if (!this._showPassword) {
-            $("#password").prop("type", "text");
+            $('#password').prop('type', 'text');
             this._showPassword = true;
         }
         else {
-            $("#password").prop("type", "password");
+            $('#password').prop('type', 'password');
             this._showPassword = false;
         }
     }
 
     getTitle(): string {
-        return "Connexion";
+        return 'Connexion';
     }
 }
