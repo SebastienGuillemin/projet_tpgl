@@ -91,7 +91,7 @@
     },
     {
         "nom": "Alarme",
-        "etat": "Sonne",
+        "etat": "Éteinte",
         "type": "Alarme"
     },
     {
