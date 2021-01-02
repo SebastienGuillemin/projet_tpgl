@@ -32,17 +32,4 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('Doit récupérer si l\'utilisateur est connecté', () => {
-    //Cas où l'utilisateur est connecté :
-    let req = httpTestingController.expectOne(ConnectionService.ApiUrl);
-    req.flush("utilisateur connecté.");
-    expect(component.userConnected).toBeTrue();
-    
-    //Cas où l'utilisateur n'est pas connecté :
-    component.ngOnInit();
-    let req2 = httpTestingController.expectOne(ConnectionService.ApiUrl);
-    req2.flush("utilisateur non connecté.", {status : 401, statusText : "Non connecté."});
-    expect(component.userConnected).toBeFalse();
-  });
 });
