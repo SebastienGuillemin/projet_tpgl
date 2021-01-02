@@ -28,10 +28,10 @@ export class FournirDonneesMaterielComponent implements OnInit {
         this.materiels = [];
         this.noms = [];
         this.listEtats = [];
-        this._getNomMateriels();
+        this.getNomMateriels();
     }
 
-    private _getNomMateriels(): void {
+    getNomMateriels(): void {
         this._materielService.getMateriels().subscribe(
             res => {
                 res.body.forEach(element => {
