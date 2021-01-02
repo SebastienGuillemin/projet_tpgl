@@ -45,12 +45,12 @@ describe('EtatMaterielComponent', () => {
     let reqConnection = httpTestingController.expectOne(ConnectionService.ApiUrl);  //Test si l'utilisateur est connecté.
     reqConnection.flush("Non connecté", { status: 401, statusText: "Utilisateur non connecté" });
     expect(component.materiels).toEqual([]);
-
+    
     //Cas où un tableau vide est retourné :
     let req = httpTestingController.expectOne(MaterielService.GetApiUrl);
     req.flush([]);
     expect(component.materiels).toEqual([]);
-
+    
     //Cas où un tableau non vide est renvoyé
     component.ngOnInit();
     let req2 = httpTestingController.expectOne(MaterielService.GetApiUrl);

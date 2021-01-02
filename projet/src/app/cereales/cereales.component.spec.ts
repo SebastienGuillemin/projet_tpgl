@@ -40,6 +40,7 @@ describe('CerealesComponent', () => {
   });
 
   it('Doit récupérer les céréales', () => {
+    console.log(window.location.href);
     //(inutile d'appeler ngOnInit() car déjà appelé une fois à la création du composant)
     //Cas où l'utilisateur n'est pas connecté :
     let reqConnection = httpTestingController.expectOne(ConnectionService.ApiUrl);  //Test si l'utilisateur est connecté.
@@ -50,12 +51,14 @@ describe('CerealesComponent', () => {
     //Cas où aucune céréale n'est retournée:
     component.ngOnInit();
     let reqConnection2 = httpTestingController.expectOne(ConnectionService.ApiUrl);  //Test si l'utilisateur est connecté.
+    reqConnection2.flush("ok");
     let req2 = httpTestingController.expectOne(CerealesService.GetApiUrl);
     req2.flush([]);
     expect(component.cereales).toEqual([]);
     
     component.ngOnInit();
     let reqConnection3 = httpTestingController.expectOne(ConnectionService.ApiUrl);  //Test si l'utilisateur est connecté.
+    reqConnection3.flush("ok");
     let req3 = httpTestingController.expectOne(CerealesService.GetApiUrl);
     //Réponse avec un lot de céréale.
     req3.flush([{
