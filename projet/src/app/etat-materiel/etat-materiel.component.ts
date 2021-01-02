@@ -1,6 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Materiel } from '../shared/model/materiel.model';
+import { UserRole } from '../shared/model/user.model';
+import { ConnectionService } from '../shared/services/connection.service';
 import { MaterielFactoryService } from '../shared/services/materiel-factory.service';
 import { MaterielService } from '../shared/services/materiel.service';
 
@@ -13,7 +16,7 @@ export class EtatMaterielComponent implements OnInit {
 
   public materiels: Materiel[];
 
-  constructor(private _materielService: MaterielService, private _materielFactory: MaterielFactoryService) {
+  constructor(private _materielService: MaterielService, private _materielFactory: MaterielFactoryService, private _connectionService: ConnectionService, private _router: Router) {
     this.materiels = [];
   }
 
@@ -22,6 +25,7 @@ export class EtatMaterielComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._connectionService.redirectIfNotAuthorized(UserRole.User, () => this._router.navigate(['connection']));
     //Ici, on récupère un obeservable qui contiendra la réponse de la requête http (voir code du service).
     //Cela permet "d'attendre" la réponse du serveur et faire quelque chose une fois que les données sont reçues.
     this._materielService.getMateriels()

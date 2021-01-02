@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CerealesService } from '../shared/services/cereales.service';
 import { Cereale } from '../shared/model/cereale.model';
+import { ConnectionService } from '../shared/services/connection.service';
+import { Router } from '@angular/router';
+import { UserRole } from '../shared/model/user.model';
 
 @Component({
   selector: 'app-cereales',
@@ -10,9 +13,10 @@ import { Cereale } from '../shared/model/cereale.model';
 export class CerealesComponent implements OnInit {
   public cereales = [];
 
-  constructor(private _cerealesService: CerealesService) { }
+  constructor(private _cerealesService: CerealesService, private _connectionService: ConnectionService, private _router: Router) { }
 
   ngOnInit(): void {
+    this._connectionService.redirectIfNotAuthorized(UserRole.User, () => this._router.navigate(['connection']));  
     //Ici, on récupère un obeservable qui contiendra la réponse de la requête http (voir code du service).
     //Cela permet "d'attendre" la réponse du serveur et faire quelque chose une fois que les données sont reçues.
     this._cerealesService.getCereales()
