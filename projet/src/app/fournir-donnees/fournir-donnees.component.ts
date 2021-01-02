@@ -16,7 +16,6 @@ export class FournirDonneesComponent {
   }
 
   ngOnInit(): void {
-    const requiredAccess = UserRole.Admin;
-    this._connectionService.redirectIfNotAuthorized(requiredAccess, () => this._router.navigate(['connection']));
+    this._connectionService.redirectIfNotAuthorized([UserRole.Admin], () => this._router.navigate(['connection']));
   }
 }

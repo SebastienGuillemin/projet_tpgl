@@ -36,7 +36,7 @@ export class ConnectionService {
         );
     }
 
-    redirectIfNotAuthorized(requiredAccess : UserRole, onNotAuthorized: Function): void {
+    redirectIfNotAuthorized(requiredAccess : UserRole[], onNotAuthorized: Function): void {
         let user: User = null;
         const headers = new HttpHeaders()
             .set('Authorization', 'Access-Control-Allow-Origin');
@@ -48,7 +48,7 @@ export class ConnectionService {
         }).subscribe(
             res => {
                 user = res.body as User;
-                if (requiredAccess != user.role) {
+                if (!requiredAccess.includes(user.role)) {
                     onNotAuthorized();
                 }
             },

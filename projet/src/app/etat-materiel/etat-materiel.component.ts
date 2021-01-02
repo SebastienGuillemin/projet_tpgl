@@ -25,7 +25,7 @@ export class EtatMaterielComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._connectionService.redirectIfNotAuthorized(UserRole.User, () => this._router.navigate(['connection']));
+    this._connectionService.redirectIfNotAuthorized([UserRole.User, UserRole.Admin], () => this._router.navigate(['connection']));
     //Ici, on récupère un obeservable qui contiendra la réponse de la requête http (voir code du service).
     //Cela permet "d'attendre" la réponse du serveur et faire quelque chose une fois que les données sont reçues.
     this._materielService.getMateriels()

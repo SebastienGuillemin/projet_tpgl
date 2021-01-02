@@ -76,12 +76,12 @@
     },
     {
         "nom": "Fosse1",
-        "etat": "Pleine",
+        "etat": "Vide",
         "type": "Fosse"
     },
     {
         "nom": "Fosse2",
-        "etat": "Pleine",
+        "etat": "Vide",
         "type": "Fosse"
     },
     {
