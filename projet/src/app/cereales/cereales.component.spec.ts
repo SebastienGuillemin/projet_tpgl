@@ -6,6 +6,7 @@ import { routes } from '../app-routing.module';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { CerealesService } from '../shared/services/cereales.service';
 import { Cereale } from '../shared/model/cereale.model';
+import { ConnectionService } from '../shared/services/connection.service';
 
 describe('CerealesComponent', () => {
   let component: CerealesComponent;
@@ -39,16 +40,25 @@ describe('CerealesComponent', () => {
   });
 
   it('Doit récupérer les céréales', () => {
-    //Cas où aucune céréale n'est retournée:
     //(inutile d'appeler ngOnInit() car déjà appelé une fois à la création du composant)
-    let req = httpTestingController.expectOne(CerealesService.GetApiUrl);
-    req.flush([]);
+    //Cas où l'utilisateur n'est pas connecté :
+    let reqConnection = httpTestingController.expectOne(ConnectionService.ApiUrl);  //Test si l'utilisateur est connecté.
+    reqConnection.flush("Non connecté", { status: 401, statusText: "Utilisateur non connecté" });
+    let req = httpTestingController.expectOne(CerealesService.GetApiUrl); //Cette url est tout même appelée mais l'utilisateur sera redirigé.
     expect(component.cereales).toEqual([]);
-
+    
+    //Cas où aucune céréale n'est retournée:
     component.ngOnInit();
+    let reqConnection2 = httpTestingController.expectOne(ConnectionService.ApiUrl);  //Test si l'utilisateur est connecté.
     let req2 = httpTestingController.expectOne(CerealesService.GetApiUrl);
+    req2.flush([]);
+    expect(component.cereales).toEqual([]);
+    
+    component.ngOnInit();
+    let reqConnection3 = httpTestingController.expectOne(ConnectionService.ApiUrl);  //Test si l'utilisateur est connecté.
+    let req3 = httpTestingController.expectOne(CerealesService.GetApiUrl);
     //Réponse avec un lot de céréale.
-    req2.flush([{
+    req3.flush([{
       "num": 1,
       "type": "1",
       "poids": 1,
