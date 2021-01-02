@@ -10,5 +10,5 @@ import { ConnectionService } from '../shared/services/connection.service';
 })
 export class HeaderComponent {
 
-  constructor(private _connectionService: ConnectionService) { }
+  constructor(public connectionService: ConnectionService) { }
 }
