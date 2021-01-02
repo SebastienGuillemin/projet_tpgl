@@ -40,6 +40,7 @@ export class ConnectionComponent implements OnInit {
         this._user = this._formService.getModel();
         this._connectionService.postData(this._user).subscribe(           // Listener sur la réponse envoyé par le serveur.
             res => {
+                this._connectionService["userConnected"] = true;
                 this._router.navigate([ConnectionService.UrlOnConnectionSuccess]);
             },
             (err: HttpErrorResponse) => {

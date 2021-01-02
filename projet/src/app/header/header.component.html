@@ -11,10 +11,10 @@
         <a class="nav-link" href="#" routerLink="/fournir-donnees" routerLinkActive="active">Fournir données</a>
       </li>
       <li class="nav-item">
-        <a *ngIf="!userConnected" class="nav-link" href="#" routerLink="/connection" routerLinkActive="active" >
+        <a *ngIf="!_connectionService.userConnected" class="nav-link" href="#" routerLink="/connection" routerLinkActive="active" >
           Connexion
         </a>
-        <a *ngIf="userConnected" class="nav-link" href="#" routerLink="/deconnection" routerLinkActive="active" >
+        <a *ngIf="_connectionService.userConnected" class="nav-link" href="#" routerLink="/deconnection" routerLinkActive="active" >
           Déconnexion
         </a>
       </li>

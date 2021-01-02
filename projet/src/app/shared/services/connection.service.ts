@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class ConnectionService {
+    public static userConnected: boolean = false;
     public static ApiUrl: string = "api/connection";
     public static ApiUrlLogout: string = "api/deconnection";
     public static UrlOnConnectionSuccess = "/cereales";
