@@ -44,7 +44,7 @@ describe('CerealesComponent', () => {
     //Cas où l'utilisateur n'est pas connecté :
     let reqConnection = httpTestingController.expectOne(ConnectionService.ApiUrl);  //Test si l'utilisateur est connecté.
     reqConnection.flush("Non connecté", { status: 401, statusText: "Utilisateur non connecté" });
-    let req = httpTestingController.expectOne(CerealesService.GetApiUrl); //Cette url est tout même appelée mais l'utilisateur sera redirigé.
+    httpTestingController.expectOne(CerealesService.GetApiUrl); //Cette url est tout même appelée mais l'utilisateur sera redirigé.
     expect(component.cereales).toEqual([]);
     
     //Cas où aucune céréale n'est retournée:

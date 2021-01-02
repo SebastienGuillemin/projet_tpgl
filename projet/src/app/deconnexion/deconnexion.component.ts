@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
 })
 export class DeconnexionComponent implements OnInit {
 
-
-
   constructor(private _connectionService: ConnectionService, private _router: Router) { }
 
   ngOnInit(): void {
@@ -20,6 +18,10 @@ export class DeconnexionComponent implements OnInit {
         this._connectionService["userConnected"] = false;
       }
     );
+  }
+
+  getConnectionService(): ConnectionService {
+    return this._connectionService;
   }
 
   getTitle(): string {

@@ -36,7 +36,7 @@ export class ConnectionService {
         );
     }
 
-    redirectIfNotAuthorized(requiredAccess : UserRole[], onNotAuthorized: Function): void {
+    redirectIfNotAuthorized(requiredAccess: UserRole[], onNotAuthorized: Function): void {
         let user: User = null;
         const headers = new HttpHeaders()
             .set('Authorization', 'Access-Control-Allow-Origin');
@@ -82,16 +82,13 @@ export class ConnectionService {
     }
 
     logout(): Observable<any> {
-      const headers = new HttpHeaders()
-        .set('Authorization', 'Access-Control-Allow-Origin')
-        .set('Content-Type', 'application/json');
+        const headers = new HttpHeaders()
+            .set('Authorization', 'Access-Control-Allow-Origin');
 
-
-      return this._httpClient.post(ConnectionService.ApiUrlLogout, null, {
-        headers: headers,
-        observe: 'response',
-        withCredentials: true //Permet d'envoyer le cookie de session.
-      });
-
+        return this._httpClient.get(ConnectionService.ApiUrlLogout, {
+            headers: headers,
+            observe: 'response',
+            withCredentials: true
+        });
     }
 }
