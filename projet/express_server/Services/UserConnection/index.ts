@@ -33,7 +33,6 @@ export class UserConnectionService {
 
     logout(req: express.Request, res: express.Response): void {
       req.session.destroy(function(err) {
-
       });
       res.status(200).send();
     }

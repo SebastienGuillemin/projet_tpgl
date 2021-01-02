@@ -29,7 +29,7 @@ app.post('/api/postCereales', function(req: express.Request, res) {
     manager.updateCereales(req, res);
 });
 
-app.post('/api/deconnection', function(req: express.Request, res) {
+app.get('/api/deconnection', function(req: express.Request, res) {
   const userConnectionService = new UserConnectionService();
   userConnectionService.logout(req, res);
 });
