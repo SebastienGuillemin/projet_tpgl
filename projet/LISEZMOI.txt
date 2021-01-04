@@ -1,3 +1,5 @@
+Avant de lancer les serveurs mettez à jour les paquets nécessaires avec la commande 'npm update'.
+
 Pour lancer les serveurs angular et nodeJS utilisez la commande 'npm start'.
 
 Pour lancer les tests utilisez la commande 'ng test'.
