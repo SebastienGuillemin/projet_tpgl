@@ -1,0 +1,5 @@
+Pour lancer les serveurs angular et nodeJS utilisez la commande 'npm start'.
+
+Pour lancer les tests utilisez la commande 'ng test'.
+
+Pour voir la couverture du code par les tests ouvrez le fichier 'coverage/projet/index.html'.
